@@ -16,11 +16,11 @@ const LessonCard = ({
       <div className="mb-4 h-full w-full overflow-hidden rounded-3xl border-2 border-gray-300 bg-gray-100">
         <ReactPlayer
           url={lessonVideo}
-          controls={false}
           volume={0.6}
           muted={false}
           loop={true}
           width="100%"
+          controls
         />
       </div>
 

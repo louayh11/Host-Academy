@@ -1,30 +1,50 @@
 import React, { useState } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 //----------------------------hooks----------------------//
-import useSubscribedCourses from "../../../hooks/userHook";
+import { useSubscribedCourses } from "../../../hooks/react-query/useCourses";
 import useFetchCourses from "../../../hooks/courseHook";
 //----------------------------cards----------------------//
 import UnfinishedCoursesCard from "components/card/UnfinishedCoursesCard";
 import CourseCard from "components/card/CourseCard";
 
 const Courses = () => {
-  const subscribedCourses = useSubscribedCourses();
-  console.log("subscribedCourses", subscribedCourses);
+  const userString = localStorage.getItem("user");
+  const user = JSON.parse(userString);
+  const userId = user.uid;
+  console.log("userId", userId);
+
+  const {
+    data: subscribedCourses,
+    isLoading,
+    isError,
+  } = useSubscribedCourses(userId);
+  console.log("xxxxxxxxxxxxx", subscribedCourses);
   const AllCourses = useFetchCourses();
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 2;
-  const totalPages = Math.ceil(subscribedCourses.length / itemsPerPage);
+  const totalPages = Math.ceil(subscribedCourses?.length / itemsPerPage);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const visibleCourses = subscribedCourses.slice(
+  {
+    /*const visibleCourses = subscribedCourses.slice(
     startIndex,
     startIndex + itemsPerPage
-  );
+  );*/
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error loading courses.</div>;
+  }
 
   return (
     <div className="mt-3 grid h-full grid-cols-1 gap-5">
@@ -53,10 +73,9 @@ const Courses = () => {
               )}
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2">
-            {visibleCourses.map((subscribed, index) => (
-              <div key={index} className="pr-2">
-                {console.log("subscribed:", subscribed)}{" "}
+          {/* <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2">
+            {subscribedCourses?.map((subscribed, id) => (
+              <div key={id} className="pr-2">
                 <UnfinishedCoursesCard
                   id={subscribed?.id}
                   title={subscribed?.title}
@@ -72,7 +91,7 @@ const Courses = () => {
                 />
               </div>
             ))}
-          </div>
+                 </div>*/}
         </div>
 
         <div className="mb-4 mt-5 flex flex-col justify-between md:flex-row md:items-center">
@@ -81,16 +100,21 @@ const Courses = () => {
           </h4>
         </div>
         <div className="z-20 grid grid-cols-1 gap-5 md:grid-cols-3">
-          {AllCourses.map((course, id) => (
+          {subscribedCourses.courses?.map((subscribed, id) => (
             <CourseCard
               key={id}
-              id={course.id}
-              title={course.title}
-              instructor={course.instructor}
-              price={course.price}
-              image={course.image}
-              level={course.level}
-              chapters={course.chapters.length}
+              id={subscribed?.id}
+              title={subscribed?.title}
+              image={subscribed?.image}
+              level={subscribed?.level}
+              instructor={subscribed?.instructor.fullName}
+              userpic={subscribed?.instructor.userpic}
+              progress={subscribed?.progress}
+              lessons={subscribed.chapters.map(
+                (chapter) => chapter?.lessons?.length
+              )}
+              chapters={subscribed?.chapters?.length}
+              price={subscribed?.price}
             />
           ))}
         </div>

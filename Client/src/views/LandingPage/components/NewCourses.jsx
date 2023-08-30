@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { FiFilter } from "react-icons/fi";
-
-import useFetchCourses from "../../../hooks/courseHook";
+import { useCourses } from "../../../hooks/react-query/useCourses";
 import CourseCard from "components/card/CourseCard";
 
 const NewCourses = () => {
   const [currPage, setCurrPage] = useState(0);
-  const AllCourses = useFetchCourses();
+
+  const { data: courses, isLoading } = useCourses();
 
   const itemsPerPage = 8;
-  const totalPages = Math.ceil(AllCourses.length / itemsPerPage);
+  const totalPages = Math.ceil((courses?.length || 0) / itemsPerPage);
+
+  if (isLoading) {
+    return <p>Loading courses...</p>;
+  }
 
   return (
     <div className="mx-auto bg-white py-10  md:px-11 lg:px-24" id="about">
@@ -25,21 +29,20 @@ const NewCourses = () => {
       </div>
 
       <div className="grid gap-8 px-12 pb-16 sm:grid-cols-2 sm:px-0 md:grid-cols-2 lg:grid-cols-4">
-        {AllCourses.slice(
-          currPage * itemsPerPage,
-          (currPage + 1) * itemsPerPage
-        ).map((course, id) => (
-          <CourseCard
-            key={id}
-            id={course.id}
-            title={course.title}
-            instructor={course.instructor}
-            price={course.price}
-            image={course.image}
-            level={course.level}
-            chapters={course.chapters.length}
-          />
-        ))}
+        {courses
+          ?.slice(currPage * itemsPerPage, (currPage + 1) * itemsPerPage)
+          ?.map((course, id) => (
+            <CourseCard
+              key={id}
+              id={course.id}
+              title={course.title}
+              instructor={course.instructor}
+              price={course.price}
+              image={course.image}
+              level={course.level}
+              chapters={course.chapters.length}
+            />
+          ))}
       </div>
       <div className="mt-4 flex justify-center overflow-x-auto">
         {Array.from({ length: totalPages }, (_, i) => (

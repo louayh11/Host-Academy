@@ -4,7 +4,20 @@ import ScoreIcon from "assets/icons/ScoreIcon.png";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const CourseCard = ({ title, image, level, chapters, extra, id, price }) => {
+const CourseCard = ({
+  extra,
+  title,
+  image,
+  difficulty,
+  id,
+  chapters,
+  instructor,
+  progress,
+  lessons,
+  price,
+  level,
+  userpic,
+}) => {
   return (
     <Card
       extra={`flex flex-col w-full h-full !p-4 3xl:p-![18px] bg-white ${extra}`}
@@ -23,7 +36,7 @@ const CourseCard = ({ title, image, level, chapters, extra, id, price }) => {
             <p className="text-lg font-bold dark:text-white ">{title}</p>
           </div>
         </div>
-        <div className="mt-1  mb-6  flex justify-between">
+        <div className="mb-6  mt-1  flex justify-between">
           <div className="flex items-center justify-center gap-3">
             <p className="text-md font-medium">Chapters</p>
             <p className="text-md font-semibold  dark:text-white">{chapters}</p>
@@ -37,7 +50,7 @@ const CourseCard = ({ title, image, level, chapters, extra, id, price }) => {
             <p className="text-md font-semibold  dark:text-white">{level}</p>
           </div>
         </div>
-        <div className="mt-1  mb-4 flex justify-between">
+        <div className="mb-4  mt-1 flex justify-between">
           <Link to={`/course/${id}`}>
             <button className="flex items-center justify-start gap-2 rounded-[10px] bg-[#000000] py-2.5 pl-4 pr-2 text-center text-sm font-medium capitalize leading-tight text-white">
               Start Course <MdOutlineKeyboardArrowRight size={20} />
@@ -52,7 +65,7 @@ const CourseCard = ({ title, image, level, chapters, extra, id, price }) => {
           >
             <div className="relative">
               <img src={ScoreIcon} width={50} alt="Score Icon" />
-              <p className="absolute top-1/2 left-[45%] -translate-x-1/2 -translate-y-1/2 transform text-lg font-bold">
+              <p className="absolute left-[45%] top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-lg font-bold">
                 1
               </p>
             </div>
