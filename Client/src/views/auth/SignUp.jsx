@@ -33,9 +33,14 @@ export default function SignUp() {
         onSubmit={handleSignUp}
         className="mt-[10vh] w-full max-w-full flex-col items-center md:pl-4 lg:pl-0"
       >
-        <h4 className="mb-2.5 text-4xl font-bold text-navy-700 dark:text-white">
-          Sign Up
-        </h4>
+        <div className="flex items-center justify-between">
+          <h4 className="mb-2.5 text-4xl font-bold text-navy-700 dark:text-white">
+            Sign Up
+          </h4>
+          <div className="cursor-pointer capitalize text-gray-600 duration-200 hover:scale-105 hover:text-orange-500">
+            <a href="/home">Back to Home</a>
+          </div>
+        </div>
 
         <div className="mb-5 flex flex-col gap-4">
           <input

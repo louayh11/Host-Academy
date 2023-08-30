@@ -42,10 +42,13 @@ const Home = () => {
             Do you like it too 😍 ?
           </p>
           <div className="flex items-center gap-3">
-            <button className="flex items-center justify-start gap-2 rounded-[10px] bg-[#000000] py-4 pl-4 pr-2 text-center text-sm font-medium capitalize leading-tight text-white">
+            <a
+              href="/auth/sign-in"
+              className="flex items-center justify-start gap-2 rounded-[10px] bg-[#000000] py-4 pl-4 pr-2 text-center text-sm font-medium capitalize leading-tight text-white"
+            >
               Start Course Now
               <MdOutlineKeyboardArrowRight size={20} />
-            </button>
+            </a>
           </div>
         </div>
       </div>

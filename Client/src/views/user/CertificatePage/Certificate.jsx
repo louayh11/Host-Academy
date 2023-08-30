@@ -20,12 +20,13 @@ const Certificate = () => {
   }, []);
 
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+    <div className=" grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 ">
       {certificates?.map((certificate) => (
         <CertificateCard
           key={certificate.certificateId}
           displayName={certificate.displayName}
           courseTitle={certificate.courseTitle}
+          courseDescription={certificate.courseDescription}
           completionDate={certificate.completionDate}
         />
       ))}

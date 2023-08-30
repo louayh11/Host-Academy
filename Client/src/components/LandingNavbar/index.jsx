@@ -7,7 +7,6 @@ const LandingNavBar = () => {
   const [nav, setNav] = useState(false);
 
   const handleLinkClick = () => {
-    // Close the mobile nav after a link is clicked
     if (nav) {
       setNav(false);
     }
@@ -40,11 +39,11 @@ const LandingNavBar = () => {
       </div>
       <div className="hidden gap-4 md:flex">
         <button className="cursor-pointer font-medium capitalize text-gray-500 duration-200 hover:scale-105 hover:text-orange-500">
-          <a>Login</a>
+          <a href="auth/sign-in">Login</a>
         </button>
 
         <button className=" rounded-3xl bg-orange-400 px-4 py-2 font-medium text-[#000000] duration-200 hover:scale-105">
-          Sign up
+          <a href="auth/sign-up"> Sign up</a>
         </button>
       </div>
 
