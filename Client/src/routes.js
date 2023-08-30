@@ -23,7 +23,7 @@ import CourseForm from "./views/admin/Courses/CourseForm";
 import SignUp from "views/auth/SignUp";
 import NewQuiz from "views/admin/quiz";
 import Validate from "views/user/FinalExam/components/Validate";
-
+import PurchaseCourse from "views/LandingPage/PurchaseCoursePage";
 
 const routes = [
   {
@@ -104,12 +104,18 @@ const routes = [
   },
   {
     name: "landing",
-    layout: "/home",
-    path: "home",
+    layout: "/general",
+    path: "/home",
     component: <LandingPage />,
   },
+  {
+    name: "landing",
+    layout: "/general",
+    path: "/courseDetails/:id",
+    component: <PurchaseCourse />,
+  },
 
-    {
+  {
     name: "Exam",
     layout: "/user",
     path: "Exam",

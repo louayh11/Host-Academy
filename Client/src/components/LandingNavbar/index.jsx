@@ -13,7 +13,7 @@ const LandingNavBar = () => {
   };
 
   return (
-    <div className="border-zinc-500 fixed z-10 flex h-20 w-full items-center justify-between border-b bg-white px-4 text-white lg:px-20">
+    <div className="border-zinc-500  z-10 flex h-20 w-full items-center justify-between border-b bg-white px-4 text-white lg:px-20">
       <div className="flex items-center gap-8">
         <div className="flex items-end gap-1">
           <h1 className=" text-3xl font-bold text-[#FFAF20]">Tabaani</h1>
