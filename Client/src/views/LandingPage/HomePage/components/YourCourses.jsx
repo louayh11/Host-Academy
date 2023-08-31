@@ -1,6 +1,6 @@
 import React from "react";
 import UnfinishedCoursesCard from "components/card/UnfinishedCoursesCard";
-import useSubscribedCourses from "../../../hooks/userHook";
+import useSubscribedCourses from "../../../../hooks/userHook";
 
 const YourCourses = () => {
   const subscribedCourses = useSubscribedCourses();
@@ -8,7 +8,7 @@ const YourCourses = () => {
   return (
     <div className="mx-auto bg-white py-10  md:px-11 lg:px-24" id="about">
       <div className="flex items-center justify-between pb-8 pr-2">
-        <p className="text-left text-2xl font-bold text-[#000000]">
+        <p className="text-[#000000] text-left text-2xl font-bold">
           YOUR COURSES
         </p>
         <button className="rounded-lg bg-gray-200 px-6 py-2">See All</button>

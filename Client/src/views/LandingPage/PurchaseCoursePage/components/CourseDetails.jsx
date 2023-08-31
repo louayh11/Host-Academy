@@ -2,7 +2,7 @@ import React from "react";
 import { IoMdCheckmark } from "react-icons/io";
 import { FaClock,FaMoneyBill,FaLayerGroup  } from "react-icons/fa";
 
-const CourseDetails = ({ chapters,price,level}) => {
+const CourseDetails = ({ chapters,price,level,courseDescription}) => {
   return (
     <div>
       <div className="grid gap-8 pb-16 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
@@ -69,11 +69,7 @@ const CourseDetails = ({ chapters,price,level}) => {
         <div className="space-y-4">
           <h5 className="font-bold">About this course</h5>
           <p>
-            Master the basics of digital marketing with our free course
-            accredited by Interactive Advertising Bureau Europe and The Open
-            University. There are 26 modules to explore, all created by Google
-            trainers, packed full of practical exercises and real-world examples
-            to help you turn knowledge into action.
+          {courseDescription}
           </p>
         </div>
       </div>

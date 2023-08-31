@@ -18,7 +18,7 @@ import CourseOverview from "./views/user/CourseOverview/CourseOverview";
 import CourseOverviewad from "./views/admin/CourseOverview/CourseOverviewad";
 import QuizPage from "./views/user/quizzPage/QuizPage";
 import Certificates from "./views/user/CertificatePage/Certificate";
-import LandingPage from "./views/LandingPage/LandingPage";
+import LandingPage from "./views/LandingPage/HomePage";
 import CourseForm from "./views/admin/Courses/CourseForm";
 import SignUp from "views/auth/SignUp";
 import NewQuiz from "views/admin/quiz";

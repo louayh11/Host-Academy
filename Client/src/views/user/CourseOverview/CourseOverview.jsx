@@ -13,14 +13,12 @@ const CourseOverview = () => {
   const [selectedQuizzIndex, setSelectedQuizzIndex] = useState("");
   const [isQuizVisible, setIsQuizVisible] = useState(false);
   const [selectedFinalExamIndex, setSelectedFinalExamIndex] = useState("");
-const [isFinalExamVisible, setIsFinalExamVisible] = useState(false);
+  const [isFinalExamVisible, setIsFinalExamVisible] = useState(false);
 
-
-const handleFinalExamClick = (finalExamIndex) => {
-  setSelectedFinalExamIndex(finalExamIndex);
-  setIsFinalExamVisible(true);
-};
-
+  const handleFinalExamClick = (finalExamIndex) => {
+    setSelectedFinalExamIndex(finalExamIndex);
+    setIsFinalExamVisible(true);
+  };
 
   const { id } = useParams();
 
@@ -41,22 +39,22 @@ const handleFinalExamClick = (finalExamIndex) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/progress', {
-          method: 'POST',
+        const response = await fetch("http://localhost:5000/api/progress", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            userId: 'KuO2AllgwWdpkQydSDekXkyJT1I2',
-            courseId: 'vSnDnHmw9f9YMArJ05RU'
-          })
+            userId: "KuO2AllgwWdpkQydSDekXkyJT1I2",
+            courseId: "vSnDnHmw9f9YMArJ05RU",
+          }),
         });
 
         const data = await response.json();
 
         setProgress(data.progress);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -106,14 +104,13 @@ const handleFinalExamClick = (finalExamIndex) => {
             onLessonClick={handleLessonClick}
             onChapterClick={handleChapterClick}
             onQuizzClick={handleQuizzClick}
-            onFinalExamClick={handleFinalExamClick} 
+            onFinalExamClick={handleFinalExamClick}
             showLesson={showLesson}
-            progress= {progress}
+            progress={progress}
           />
         )}
       </div>
 
-  
       <div className="md:col-span-12 lg:col-span-8">
         {/* Display LessonCard or QuizzCard based on selection */}
         {!isFinalExamVisible && !isQuizVisible && selectedLesson && (
@@ -128,7 +125,6 @@ const handleFinalExamClick = (finalExamIndex) => {
         )}
         {!isFinalExamVisible && isQuizVisible && <Quiz lessonId={lessonId} />}
         {isFinalExamVisible && <Ready id={id} />}
-
       </div>
     </div>
   );

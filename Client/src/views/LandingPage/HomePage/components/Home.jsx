@@ -1,7 +1,7 @@
 import React from "react";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import wallpaperTablet from "../../../assets/img/wallpaperTablet.png";
-import wallpaperImage from "../../../assets/img/wallpaperImage.png";
+import wallpaperTablet from "../../../../assets/img/wallpaperTablet.png";
+import wallpaperImage from "../../../../assets/img/wallpaperImage.png";
 
 const Home = () => {
   return (
@@ -36,7 +36,7 @@ const Home = () => {
 
         <div className="mt-48 flex flex-col items-center px-8 text-center sm:flex sm:flex-col sm:items-center sm:px-11 sm:text-center md:flex md:flex-col md:items-center md:px-11 lg:mt-0 lg:block lg:w-1/2 lg:px-24 lg:text-left">
           <h2 className="text-black mb-2 text-5xl font-bold ">Hello Friends</h2>
-          <p className="text-black mb-6 text-[40px] font-bold">
+          <p className="text-black text-[40px] mb-6 font-bold">
             We are Tabaani Academy And We want To Start A HOSTING Course
             Together. <br />
             Do you like it too 😍 ?
@@ -44,7 +44,7 @@ const Home = () => {
           <div className="flex items-center gap-3">
             <a
               href="/auth/sign-in"
-              className="flex items-center justify-start gap-2 rounded-[10px] bg-[#000000] py-4 pl-4 pr-2 text-center text-sm font-medium capitalize leading-tight text-white"
+              className="rounded-[10px] bg-[#000000] flex items-center justify-start gap-2 py-4 pl-4 pr-2 text-center text-sm font-medium capitalize leading-tight text-white"
             >
               Start Course Now
               <MdOutlineKeyboardArrowRight size={20} />

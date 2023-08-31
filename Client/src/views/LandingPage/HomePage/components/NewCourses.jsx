@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiFilter } from "react-icons/fi";
-import { useCourses } from "../../../hooks/react-query/useCourses";
+import { useCourses } from "../../../../hooks/react-query/useCourses";
 import CourseCard from "components/card/CourseCard";
 
 const NewCourses = () => {

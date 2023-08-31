@@ -5,6 +5,7 @@ import BestHosts from "./components/BestHosts";
 import YourCourses from "./components/YourCourses";
 import Newsletter from "./components/Newsletter";
 import TopCourses from "./components/TopCourses";
+import Footer from "components/footer/Footer";
 
 const LandingPage = () => {
   return (
@@ -15,6 +16,7 @@ const LandingPage = () => {
       <YourCourses />
       <Newsletter />
       <TopCourses />
+      <Footer />
     </div>
   );
 };
