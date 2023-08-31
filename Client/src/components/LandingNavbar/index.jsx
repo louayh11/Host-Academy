@@ -97,7 +97,7 @@ const LandingNavBar = () => {
       </div>
 
       {nav && (
-        <ul className="absolute left-0 top-0 flex h-screen w-full flex-col items-center justify-center bg-white  text-gray-500">
+        <ul className="absolute left-0 top-0 flex h-screen w-full flex-col items-center justify-center bg-white text-gray-500">
           <li className="cursor-pointer px-4 py-6 text-4xl capitalize">
             <Link onClick={handleLinkClick} to="home" smooth duration={500}>
               Home
@@ -113,16 +113,51 @@ const LandingNavBar = () => {
               Contact
             </Link>
           </li>
-          <li className="cursor-pointer px-4 py-6 text-4xl capitalize">
-            <Link onClick={handleLinkClick} to="signup" smooth duration={500}>
-              Sign up
-            </Link>
-          </li>
-          <li className="cursor-pointer px-4 py-6 text-4xl capitalize">
-            <Link onClick={handleLinkClick} to="login" smooth duration={500}>
-              Login
-            </Link>
-          </li>
+          {user ? (
+            <>
+              <li className="cursor-pointer px-4 py-6 text-4xl capitalize">
+                <Link
+                  onClick={handleLinkClick}
+                  to="profile"
+                  smooth
+                  duration={500}
+                >
+                  Profile
+                </Link>
+              </li>
+              <li className="cursor-pointer px-4 py-6 text-4xl capitalize">
+                <button
+                  className="cursor-pointer px-4 py-2 font-medium text-red-500 hover:text-red-700"
+                  onClick={handleLogout}
+                >
+                  Log Out
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="cursor-pointer px-4 py-6 text-4xl capitalize">
+                <Link
+                  onClick={handleLinkClick}
+                  to="signup"
+                  smooth
+                  duration={500}
+                >
+                  Sign up
+                </Link>
+              </li>
+              <li className="cursor-pointer px-4 py-6 text-4xl capitalize">
+                <Link
+                  onClick={handleLinkClick}
+                  to="login"
+                  smooth
+                  duration={500}
+                >
+                  Login
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       )}
     </div>

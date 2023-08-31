@@ -7,14 +7,12 @@ import AuthLayout from "./layouts/auth";
 import AdminLayout from "./layouts/admin";
 import ProtectedRoute from "./layouts/ProtectedRoute/ProtectedRoute";
 import AuthWrapper from "config/AuthWrapper";
-import Error from "views/error/Error";
 
 const App = () => {
   return (
     <Routes>
       <Route path="/*" element={<GeneralLayout />} />
       <Route path="auth/*" element={<AuthLayout />} />
-      <Route path="*" element={<Error />} />
 
       <Route element={<ProtectedRoute />}>
         <Route path="user/*" element={<UserLayout />} />
