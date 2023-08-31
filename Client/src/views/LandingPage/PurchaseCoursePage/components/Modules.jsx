@@ -24,7 +24,9 @@ const Modules = ({ chapters, chaptersLength, id }) => {
 
   return (
     <div className="flex flex-col gap-8 pb-24">
-      <h1 className="text-center text-2xl font-bold">Modules (26)</h1>
+      <h1 className="text-center text-2xl font-bold">
+        Modules ({chaptersLength})
+      </h1>
 
       <div className="flex items-center justify-between gap-4">
         <button

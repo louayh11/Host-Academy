@@ -17,7 +17,7 @@ const StartCourse = ({ id, CourseTitle, courseDescription }) => {
     <div>
       <div className="mb-40 flex flex-col items-center justify-center gap-5 rounded-md">
         <h1 className="text-[#000000] text-center text-2xl">
-          Start today and get a certificate in Fundamentals of Hosting{" "}
+          Start today and get a certificate in Fundamentals of {CourseTitle}
         </h1>
 
         {/*<Link to={`/user/course/${id}`}>
