@@ -6,7 +6,11 @@ import { useNavigate } from "react-router-dom";
 
 const LandingNavBar = () => {
   const { logOut, user } = useUserAuth();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
   const [nav, setNav] = useState(false);
   const navigate = useNavigate();
 
@@ -52,7 +56,7 @@ const LandingNavBar = () => {
       </div>
       {user ? (
         <div className="relative">
-          <button onClick={handleLinkClick}>
+          <button onClick={toggleDropdown}>
             <img
               className="h-10 w-10 rounded-full"
               src={user.photoURL}
@@ -60,22 +64,24 @@ const LandingNavBar = () => {
             />
           </button>
 
-          <div className="absolute top-12 right-0 w-56 rounded-lg bg-white shadow-md">
-            <div className="p-4">
-              <p className="text-sm font-bold text-[#000000]">
-                👋 Hey, {user.displayName}
-              </p>
+          {isDropdownOpen && (
+            <div className="absolute top-12 right-0 w-56 rounded-lg bg-white shadow-md">
+              <div className="p-4">
+                <p className="text-sm font-bold text-[#000000]">
+                  👋 Hey, {user.displayName}
+                </p>
+              </div>
+              <div className="h-px w-full bg-gray-300" />
+              <div className="flex flex-col px-4 py-2">
+                <button
+                  className="mt-3 text-left font-medium text-red-500 hover:text-red-700"
+                  onClick={handleLogout}
+                >
+                  Log Out
+                </button>
+              </div>
             </div>
-            <div className="h-px w-full bg-gray-300" />
-            <div className="flex flex-col px-4 py-2">
-              <button
-                className="mt-3 text-left font-medium text-red-500 hover:text-red-700"
-                onClick={handleLogout}
-              >
-                Log Out
-              </button>
-            </div>
-          </div>
+          )}
         </div>
       ) : (
         <div className="hidden gap-4 md:flex">
