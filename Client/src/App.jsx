@@ -6,12 +6,15 @@ import UserLayout from "./layouts/user";
 import AuthLayout from "./layouts/auth";
 import AdminLayout from "./layouts/admin";
 import ProtectedRoute from "./layouts/ProtectedRoute/ProtectedRoute";
+import AuthWrapper from "config/AuthWrapper";
+import Error from "views/error/Error";
 
 const App = () => {
   return (
     <Routes>
       <Route path="/*" element={<GeneralLayout />} />
       <Route path="auth/*" element={<AuthLayout />} />
+      <Route path="*" element={<Error />} />
 
       <Route element={<ProtectedRoute />}>
         <Route path="user/*" element={<UserLayout />} />
@@ -19,7 +22,7 @@ const App = () => {
       </Route>
 
       {/* Redirect to root if no matching route */}
-      <Route path="/" element={<Navigate to="/" replace />} />
+      <Route path="/" element={<Navigate to="/home" replace />} />
     </Routes>
   );
 };

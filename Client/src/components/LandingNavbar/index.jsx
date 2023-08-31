@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import TabaaniAcademyLogo from "../../assets/img/Logos/TabaaniAcademyLogo.png";
 import { Link } from "react-scroll";
+import { useUserAuth } from "../../context/UserAuthContext";
+import { useNavigate } from "react-router-dom";
 
 const LandingNavBar = () => {
+  const { logOut, user } = useUserAuth();
+  console.log(user, "rojla");
+
   const [nav, setNav] = useState(false);
+  const navigate = useNavigate();
 
   const handleLinkClick = () => {
     if (nav) {
@@ -12,12 +17,21 @@ const LandingNavBar = () => {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="border-zinc-500  z-10 flex h-20 w-full items-center justify-between border-b bg-white px-4 text-white lg:px-20">
       <div className="flex items-center gap-8">
         <div className="flex items-end gap-1">
-          <h1 className=" text-[#FFAF20] text-3xl font-bold">Tabaani</h1>
-          <h1 className=" text-[#000000] text-2xl font-bold">ACADEMY</h1>
+          <h1 className=" text-3xl font-bold text-[#FFAF20]">Tabaani</h1>
+          <h1 className=" text-2xl font-bold text-[#000000]">ACADEMY</h1>
         </div>
         <ul className="hidden md:flex">
           <li className="cursor-pointer px-4 font-medium capitalize text-gray-500 duration-200 hover:scale-105">
@@ -37,15 +51,44 @@ const LandingNavBar = () => {
           </li>
         </ul>
       </div>
-      <div className="hidden gap-4 md:flex">
-        <button className="cursor-pointer font-medium capitalize text-gray-500 duration-200 hover:scale-105 hover:text-orange-500">
-          <a href="/auth/sign-in">Login</a>
-        </button>
+      {user ? (
+        <div className="relative">
+          <button onClick={handleLinkClick}>
+            <img
+              className="h-10 w-10 rounded-full"
+              src={user.photoURL}
+              alt="photo"
+            />
+          </button>
 
-        <button className=" text-[#000000] rounded-3xl bg-orange-400 px-4 py-2 font-medium duration-200 hover:scale-105">
-          <a href="/auth/sign-up"> Sign up</a>
-        </button>
-      </div>
+          <div className="absolute top-12 right-0 w-56 rounded-lg bg-white shadow-md">
+            <div className="p-4">
+              <p className="text-sm font-bold text-[#000000]">
+                👋 Hey, {user.displayName}
+              </p>
+            </div>
+            <div className="h-px w-full bg-gray-300" />
+            <div className="flex flex-col px-4 py-2">
+              <button
+                className="mt-3 text-left font-medium text-red-500 hover:text-red-700"
+                onClick={handleLogout}
+              >
+                Log Out
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="hidden gap-4 md:flex">
+          <button className="cursor-pointer font-medium capitalize text-gray-500 duration-200 hover:scale-105 hover:text-orange-500">
+            <a href="/auth/sign-in">Login</a>
+          </button>
+
+          <button className="rounded-3xl bg-orange-400 px-4 py-2 font-medium text-[#000000] duration-200 hover:scale-105">
+            <a href="/auth/sign-up"> Sign up</a>
+          </button>
+        </div>
+      )}
 
       <div
         onClick={() => setNav(!nav)}

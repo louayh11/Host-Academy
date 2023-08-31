@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { UserAuthContextProvider } from "./context/UserAuthContext";
+
 import "./index.css";
 import App from "./App";
 
@@ -14,7 +16,9 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={true} />
       <BrowserRouter>
-        <App />
+        <UserAuthContextProvider>
+          <App />
+        </UserAuthContextProvider>
       </BrowserRouter>
     </QueryClientProvider>
   </React.StrictMode>

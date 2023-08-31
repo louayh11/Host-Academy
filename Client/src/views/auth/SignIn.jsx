@@ -70,7 +70,7 @@ export default function SignIn() {
         <p className="mb-9 ml-1 text-base text-gray-600">
           Enter your email and password to sign in!
         </p>
-        <div className="h-[50px] mb-6 flex w-full items-center justify-center gap-2 rounded-xl bg-lightPrimary hover:cursor-pointer dark:bg-navy-800">
+        <div className="mb-6 flex h-[50px] w-full items-center justify-center gap-2 rounded-xl bg-lightPrimary hover:cursor-pointer dark:bg-navy-800">
           <div className="rounded-full text-xl">
             <FcGoogle />
           </div>
@@ -115,7 +115,7 @@ export default function SignIn() {
           </a>
         </div>
         <button
-          className="linear py-[12px] mt-2 w-full rounded-xl bg-yellow-500 text-base font-medium text-white transition duration-200 dark:bg-yellow-500 dark:text-white"
+          className="linear mt-2 w-full rounded-xl bg-yellow-500 py-[12px] text-base font-medium text-white transition duration-200 dark:bg-yellow-500 dark:text-white"
           onSubmit={handleLogin}
         >
           Sign In
