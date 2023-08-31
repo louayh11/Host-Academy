@@ -30,7 +30,7 @@ const PurchaseCourse = () => {
     <div className="bg-white">
       <Banner />
       <div className="mt-8 px-8 lg:px-40 space-y-8">
-        <CourseTitle CourseTitle={course.title} courseDescription={course.description}  />
+        <CourseTitle CourseTitle={course.title} courseDescription={course.description} id={course.id}  />
         <CourseDetails chapters={course.chapters.length} price={course.price} level={course.level} courseDescription={course.description}/> 
         <HowItWorks/>
         <Modules chapters={course.chapters} chaptersLength={course.chapters.length} lessons={course.chapters.lessons} id={course.id}/>
