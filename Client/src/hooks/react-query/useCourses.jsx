@@ -36,3 +36,24 @@ export const useSubscribedCourses = (userId) => {
     },
   });
 };
+
+export const useSubscribeToCourse = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation(
+    async ({ courseId, userId }) => {
+      await axios.post(
+        "http://localhost:5000/api/subscribe",
+        { userId, courseId },
+        {
+          withCredentials: true,
+        }
+      );
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ["courses"] });
+      },
+    }
+  );
+};

@@ -34,7 +34,7 @@ const PurchaseCourse = () => {
         <CourseDetails chapters={course.chapters.length} price={course.price} level={course.level} courseDescription={course.description}/> 
         <HowItWorks/>
         <Modules chapters={course.chapters} chaptersLength={course.chapters.length} lessons={course.chapters.lessons} id={course.id}/>
-        <StartCourse id={course.id}/>
+        <StartCourse id={course.id} CourseTitle={course.title} courseDescription={course.description}  />
         <Footer/>
       </div>
     </div>
