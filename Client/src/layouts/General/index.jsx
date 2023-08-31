@@ -15,10 +15,10 @@ export default function General() {
     });
   };
   return (
-    <div className=" bg-white dark:bg-navy-900">
+    <div>
       <main>
         <LandingNavBar />
-        <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 py-2">
+        <div className=" min-h-[84vh] mx-auto mb-auto h-full">
           <Routes>
             {getRoutes(routes)}
 
