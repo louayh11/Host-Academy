@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 const LandingNavBar = () => {
   const { logOut, user } = useUserAuth();
-  console.log(user, "rojla");
 
   const [nav, setNav] = useState(false);
   const navigate = useNavigate();
