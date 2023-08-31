@@ -28,12 +28,12 @@ const HowItWorks = () => {
 
           {/* About This Course */}
           <div className="space-y-4 flex flex-col items-center">
-            <h5 className="bg-blue-800 rounded-full flex items-center justify-center text-white text-lg w-11 h-11">
+          <h5 className="bg-blue-800 rounded-full flex items-center justify-center text-white text-lg w-11 h-11">
               3
             </h5>
-            <p>
-              Download and showcase your new qualification on LinkedIn and your CV.
-            </p>
+            <div className="flex items-center">
+            Download and showcase your new qualification on LinkedIn and your CV.
+            </div>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import CourseTitle from "./components/CourseTitle";
 import CourseDetails from "./components/CourseDetails";
 import HowItWorks from "./components/HowItWorks";
 import Modules from "./components/Modules";
+import StartCourse from "./components/StartCourse";
 
 const PurchaseCourse = () => {
   return (
@@ -14,6 +15,7 @@ const PurchaseCourse = () => {
         <CourseDetails />
         <HowItWorks/>
         <Modules/>
+        <StartCourse/>
       </div>
     </div>
   );
