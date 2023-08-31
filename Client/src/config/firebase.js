@@ -21,5 +21,6 @@ const auth = getAuth(app, browserLocalPersistence);
 const firestore = getFirestore(app);
 const storage = getStorage(app);
 const db = firebaseApp.firestore();
+const projectAuth = firebase.auth();
 
-export { auth, firestore, storage, db };
+export { auth, firestore, storage, db, projectAuth };
