@@ -2,7 +2,7 @@ import React from "react";
 import Card from "components/card";
 import { Link } from "react-router-dom";
 
-const ModuleCard = ({ extra, id }) => {
+const ModuleCard = ({ extra, chapterTitle, lessons, id }) => {
   return (
     <div>
       {" "}
@@ -17,7 +17,7 @@ const ModuleCard = ({ extra, id }) => {
             <div className="p-![18px] flex items-center justify-between md:flex-col md:items-start lg:flex-row lg:justify-between xl:flex-col xl:items-start 3xl:flex-row 3xl:justify-between">
               <div>
                 <p className="text-lg font-medium dark:text-white ">
-                  The Hosting opportunity
+                  {chapterTitle}
                 </p>
               </div>
             </div>
@@ -31,8 +31,12 @@ const ModuleCard = ({ extra, id }) => {
           </div>
 
           <div className="mt-1 mb-40 flex flex-col gap-4">
-            <Link to={`/course/${id}`}>Intro to Tabaani Platform</Link>
-            <Link to={`/course/${id}`}>Intro to Tabaani Platform</Link>
+            <Link to={`/user/course/${id}`} className="">
+              {lessons.map((lesson, index) => {
+                console.log(id, "Lessonssssbab");
+                return <div key={index}>{lesson.LessonTitle}</div>;
+              })}
+            </Link>
           </div>
         </div>
       </Card>

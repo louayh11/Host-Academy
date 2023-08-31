@@ -3,18 +3,20 @@ const firebase = require("../db");
 const Course = require("../models/course.model");
 const firestore = firebase.firestore();
 const multer = require("multer");
+const path = require("path");
 
 /****************************************************** */
 
 const addCourse = async (req, res) => {
   try {
     let image = null;
-    const { title, level, instructorId, price, description, imageURL } = req.body;
+    const { title, level, instructorId, price, description, imageURL } =
+      req.body;
 
     const instructorRef = firestore.collection("users").doc(instructorId);
-    
+
     const instructorSnapshot = await instructorRef.get();
-    console.log(instructorSnapshot.data())
+    console.log(instructorSnapshot.data());
     if (!instructorSnapshot.exists) {
       return res.status(404).send("Instructor not found");
     }
@@ -31,7 +33,7 @@ const addCourse = async (req, res) => {
         userpic: instructorData.photoURL,
       },
       price,
-      image :imageURL,
+      image: imageURL,
     };
 
     await firestore.collection("courses").add(courseData);
@@ -40,7 +42,6 @@ const addCourse = async (req, res) => {
     res.status(400).send(error.message);
   }
 };
-
 
 /***************************************************** */
 
@@ -62,10 +63,26 @@ const getAllcourses = async (req, res, next) => {
       const chaptersRef = coursesRef.doc(courseId).collection("chapters");
       const chaptersSnapshot = await chaptersRef.get();
       const chaptersArray = [];
-      chaptersSnapshot.forEach((chapterDoc) => {
+
+      for (const chapterDoc of chaptersSnapshot.docs) {
         const chapterData = chapterDoc.data();
-        chaptersArray.push(chapterData);
-      });
+        const lessonsRef = chaptersRef.doc(chapterDoc.id).collection("lessons");
+        const lessonsSnapshot = await lessonsRef.get();
+        const lessonsArray = [];
+
+        lessonsSnapshot.forEach((lessonDoc) => {
+          const lessonData = lessonDoc.data();
+          lessonsArray.push(lessonData);
+        });
+
+        const chapterWithLessons = {
+          id: chapterDoc.id,
+          ...chapterData,
+          lessons: lessonsArray,
+        };
+
+        chaptersArray.push(chapterWithLessons);
+      }
 
       const courseWithChapters = {
         id: courseId,
@@ -81,8 +98,6 @@ const getAllcourses = async (req, res, next) => {
     res.status(400).send(error.message);
   }
 };
-const path = require("path");
-
 const getImage = async (req, res) => {
   try {
     const imageName = req.params.imageName;

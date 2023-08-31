@@ -16,8 +16,8 @@ const LandingNavBar = () => {
     <div className="border-zinc-500  z-10 flex h-20 w-full items-center justify-between border-b bg-white px-4 text-white lg:px-20">
       <div className="flex items-center gap-8">
         <div className="flex items-end gap-1">
-          <h1 className=" text-3xl font-bold text-[#FFAF20]">Tabaani</h1>
-          <h1 className=" text-2xl font-bold text-[#000000]">ACADEMY</h1>
+          <h1 className=" text-[#FFAF20] text-3xl font-bold">Tabaani</h1>
+          <h1 className=" text-[#000000] text-2xl font-bold">ACADEMY</h1>
         </div>
         <ul className="hidden md:flex">
           <li className="cursor-pointer px-4 font-medium capitalize text-gray-500 duration-200 hover:scale-105">
@@ -39,11 +39,11 @@ const LandingNavBar = () => {
       </div>
       <div className="hidden gap-4 md:flex">
         <button className="cursor-pointer font-medium capitalize text-gray-500 duration-200 hover:scale-105 hover:text-orange-500">
-          <a href="auth/sign-in">Login</a>
+          <a href="/auth/sign-in">Login</a>
         </button>
 
-        <button className=" rounded-3xl bg-orange-400 px-4 py-2 font-medium text-[#000000] duration-200 hover:scale-105">
-          <a href="auth/sign-up"> Sign up</a>
+        <button className=" text-[#000000] rounded-3xl bg-orange-400 px-4 py-2 font-medium duration-200 hover:scale-105">
+          <a href="/auth/sign-up"> Sign up</a>
         </button>
       </div>
 

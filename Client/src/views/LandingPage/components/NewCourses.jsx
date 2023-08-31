@@ -8,7 +8,7 @@ const NewCourses = () => {
 
   const { data: courses, isLoading } = useCourses();
 
-  const itemsPerPage = 8;
+  const itemsPerPage = 3;
   const totalPages = Math.ceil((courses?.length || 0) / itemsPerPage);
 
   if (isLoading) {
@@ -18,17 +18,17 @@ const NewCourses = () => {
   return (
     <div className="mx-auto bg-white py-10  md:px-11 lg:px-24" id="about">
       <div className="flex items-end justify-between pb-8">
-        <p className="text-left text-2xl font-bold text-[#000000]">
+        <p className="text-[#000000] text-left text-2xl font-bold">
           NEW COURSES
         </p>
         <div className="mt-4 flex justify-center">
-          <button className="mx-2 rounded-md bg-gray-200 px-2 py-2 text-[#000000]">
+          <button className="text-[#000000] mx-2 rounded-md bg-gray-200 px-2 py-2">
             <FiFilter size={24} color="silver" />
           </button>
         </div>
       </div>
 
-      <div className="grid gap-8 px-12 pb-16 sm:grid-cols-2 sm:px-0 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-8 px-12 pb-16 sm:grid-cols-2 sm:px-0 md:grid-cols-2 lg:grid-cols-3">
         {courses
           ?.slice(currPage * itemsPerPage, (currPage + 1) * itemsPerPage)
           ?.map((course, id) => (

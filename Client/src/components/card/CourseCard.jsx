@@ -51,8 +51,8 @@ const CourseCard = ({
           </div>
         </div>
         <div className="mb-4  mt-1 flex justify-between">
-          <Link to={`/course/${id}`}>
-            <button className="flex items-center justify-start gap-2 rounded-[10px] bg-[#000000] py-2.5 pl-4 pr-2 text-center text-sm font-medium capitalize leading-tight text-white">
+          <Link to={`/courseDetails/${id}`}>
+            <button className="rounded-[10px] bg-[#000000] flex items-center justify-start gap-2 py-2.5 pl-4 pr-2 text-center text-sm font-medium capitalize leading-tight text-white">
               Start Course <MdOutlineKeyboardArrowRight size={20} />
             </button>
           </Link>
@@ -65,7 +65,7 @@ const CourseCard = ({
           >
             <div className="relative">
               <img src={ScoreIcon} width={50} alt="Score Icon" />
-              <p className="absolute left-[45%] top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-lg font-bold">
+              <p className="left-[45%] absolute top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-lg font-bold">
                 1
               </p>
             </div>

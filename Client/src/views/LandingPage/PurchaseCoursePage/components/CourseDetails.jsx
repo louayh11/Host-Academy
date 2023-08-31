@@ -2,15 +2,9 @@ import React from "react";
 import { IoMdCheckmark } from "react-icons/io";
 import { FaClock,FaMoneyBill,FaLayerGroup  } from "react-icons/fa";
 
-const CourseDetails = () => {
+const CourseDetails = ({ chapters,price,level}) => {
   return (
     <div>
-      <div className="flex items-end justify-between pb-8">
-        <p className="text-[#000000] text-left text-2xl font-bold">
-          NEW COURSES
-        </p>
-      </div>
-
       <div className="grid gap-8 pb-16 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
         {/* Course Details */}
         <div className="space-y-4">
@@ -19,7 +13,7 @@ const CourseDetails = () => {
           <div className="bg-yellow-500 rounded-full h-4 w-4 flex items-center justify-center mr-2">
           <IoMdCheckmark className="text-white" />
         </div>
-          <p>Modules: 26</p>
+          <p>Modules: { chapters}</p>
           </div>
           <div className="flex items-center">
           <div className="bg-yellow-500 rounded-full h-4 w-4 flex items-center justify-center mr-2">
@@ -31,13 +25,13 @@ const CourseDetails = () => {
           <div className="bg-yellow-500 rounded-full h-4 w-4 flex items-center justify-center mr-2">
           <FaLayerGroup className="text-white" />
         </div>
-          <p>Beginner</p>
+          <p>{level}</p>
           </div>
           <div className="flex items-center">
           <div className="bg-yellow-500 rounded-full h-4 w-4 flex items-center justify-center mr-2">
           <FaMoneyBill className="text-white" />
         </div>
-          <p> Free</p>
+          <p>{price}</p>
           </div>
         </div>
 

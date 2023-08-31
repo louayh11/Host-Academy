@@ -3,7 +3,7 @@ import CourseBanner from "../../../../assets/img/Banners/CourseBanner.png";
 
 const Banner = () => {
   return (
-    <section id="home">
+    <section className="w-full">
       {/* Background Image with Reduced Opacity */}
       <img src={CourseBanner} />
     </section>

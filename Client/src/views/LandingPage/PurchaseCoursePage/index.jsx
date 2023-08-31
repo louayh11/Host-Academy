@@ -5,17 +5,35 @@ import CourseDetails from "./components/CourseDetails";
 import HowItWorks from "./components/HowItWorks";
 import Modules from "./components/Modules";
 import StartCourse from "./components/StartCourse";
+import { useCourses } from "../../../hooks/react-query/useCourses";
+import { useParams } from "react-router-dom";
+
+
 
 const PurchaseCourse = () => {
+  const { id } = useParams();
+  const { data: courses, isLoading } = useCourses();
+
+  if (isLoading) {
+    return <p>Loading courses...</p>;
+  }
+
+  const course = courses.find((c) => c.id === id);
+
+  console.log('iddddd',course.id)
+
+  if (!course) {
+    return <p>Course not found</p>;
+  }
   return (
     <div>
       <Banner />
       <div className="mt-8 px-8 lg:px-40 space-y-8">
-        <CourseTitle />
-        <CourseDetails />
+        <CourseTitle CourseTitle={course.title} courseDescription={course.description}  />
+        <CourseDetails chapters={course.chapters.length} price={course.price} level={course.level}/> 
         <HowItWorks/>
-        <Modules/>
-        <StartCourse/>
+        <Modules chapters={course.chapters} chaptersLength={course.chapters.length} lessons={course.chapters.lessons} id={course.id}/>
+        <StartCourse id={course.id}/>
       </div>
     </div>
   );

@@ -2,8 +2,8 @@ import ModuleCard from "components/card/ModuleCard";
 import React, { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const Modules = () => {
-  const totalCards = 26;
+const Modules = ({ chapters, chaptersLength, id }) => {
+  const totalCards = chaptersLength;
   const cardsPerPage = 4;
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(totalCards / cardsPerPage);
@@ -22,8 +22,6 @@ const Modules = () => {
     (_, index) => index + 1
   );
 
-  const chapters = cardNumbers.slice(startIndex, endIndex);
-
   return (
     <div className="flex flex-col gap-8 pb-24">
       <h1 className="text-center text-2xl font-bold">Modules (26)</h1>
@@ -37,10 +35,18 @@ const Modules = () => {
           <FaChevronLeft />
         </button>
 
-        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {chapters.map((number) => (
-            <ModuleCard key={number} />
-          ))}
+        <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          {chapters.map((module, index) => {
+            console.log(module.lessons, "module");
+            return (
+              <ModuleCard
+                key={index}
+                id={id}
+                chapterTitle={module.title}
+                lessons={module.lessons}
+              />
+            );
+          })}
         </div>
 
         <button
