@@ -88,6 +88,7 @@ const routes = [
     component: <CourseOverviewad />,
     hideInSidebar: true,
   },
+
   {
     name: "form",
     layout: "/admin",
@@ -105,7 +106,7 @@ const routes = [
   {
     name: "landing",
     layout: "/general",
-    path: "/home",
+    path: "home",
     component: <LandingPage />,
   },
   {

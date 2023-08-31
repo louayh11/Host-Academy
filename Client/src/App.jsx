@@ -10,9 +10,9 @@ const App = () => {
     <Routes>
       <Route path="/*" element={<GeneralLayout />} />
       <Route path="auth/*" element={<AuthLayout />} />
-      <Route path="/*" element={<UserLayout />} />
+      <Route path="user/*" element={<UserLayout />} />
       <Route path="admin/*" element={<AdminLayout />} />
-      <Route path="/x" element={<Navigate to="/" replace />} />
+      <Route path="/" element={<Navigate to="/home" replace />} />
     </Routes>
   );
 };

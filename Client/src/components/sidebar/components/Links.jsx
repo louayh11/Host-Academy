@@ -19,7 +19,7 @@ export function SidebarLinks(props) {
     return routes.map((route, index) => {
       if (route.layout === "/user" && !route.hideInSidebar) {
         return (
-          <Link key={index} to={"/" + route.path}>
+          <Link key={index} to={"/user/" + route.path}>
             <div
               className={`relative mb-4 flex ${
                 activeRoute(route.path) === true

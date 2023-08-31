@@ -17,12 +17,9 @@ export function SidebarLinks(props) {
 
   const createLinks = (routes) => {
     return routes.map((route, index) => {
-      if (
-        (route.layout === "/admin" || route.layout === "/auth"|| route.layout==="/MyCourses") &&
-        !route.hideInSidebar // Check if hideInSidebar is not true
-      ) {
+      if (route.layout === "/admin" && !route.hideInSidebar) {
         return (
-          <Link key={index} to={route.layout + "/" + route.path}>
+          <Link key={index} to={"/admin/" + route.path}>
             <div
               className={`relative mb-4 flex ${
                 activeRoute(route.path) === true
@@ -52,7 +49,6 @@ export function SidebarLinks(props) {
                 >
                   {route.name}
                 </p>
-                
               </li>
               {activeRoute(route.path) ? (
                 <div className="absolute right-0 top-px h-9 w-1 rounded-lg bg-orange-400 dark:bg-orange-400" />
@@ -60,9 +56,8 @@ export function SidebarLinks(props) {
             </div>
           </Link>
         );
-      } else {
-        return null; // Return null for routes that should be hidden
       }
+      return null; // Return null for routes that should be hidden
     });
   };
 

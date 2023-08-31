@@ -1,10 +1,10 @@
 import React from "react";
-import BestHosts from "../components/BestHosts";
+import Banner from "./components/Banner";
 
 const PurchaseCourse = () => {
   return (
     <div>
-      <BestHosts />
+      <Banner />
     </div>
   );
 };
