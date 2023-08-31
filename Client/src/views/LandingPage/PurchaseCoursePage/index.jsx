@@ -3,6 +3,7 @@ import Banner from "./components/Banner";
 import CourseTitle from "./components/CourseTitle";
 import CourseDetails from "./components/CourseDetails";
 import HowItWorks from "./components/HowItWorks";
+import Modules from "./components/Modules";
 
 const PurchaseCourse = () => {
   return (
@@ -12,6 +13,7 @@ const PurchaseCourse = () => {
         <CourseTitle />
         <CourseDetails />
         <HowItWorks/>
+        <Modules/>
       </div>
     </div>
   );
