@@ -16,7 +16,9 @@ const LandingPage = () => {
       <YourCourses />
       <Newsletter />
       <TopCourses />
-      <Footer />
+      <div className="bg-white md:px-11 lg:px-24">
+        <Footer />
+      </div>
     </div>
   );
 };

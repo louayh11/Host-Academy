@@ -6,7 +6,6 @@ import UserLayout from "./layouts/user";
 import AuthLayout from "./layouts/auth";
 import AdminLayout from "./layouts/admin";
 import ProtectedRoute from "./layouts/ProtectedRoute/ProtectedRoute";
-import AuthWrapper from "config/AuthWrapper";
 
 const App = () => {
   return (

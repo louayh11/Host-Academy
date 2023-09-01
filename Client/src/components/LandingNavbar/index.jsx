@@ -55,10 +55,10 @@ const LandingNavBar = () => {
         </ul>
       </div>
       {user ? (
-        <div className="relative">
+        <div className="relative hidden md:block lg:block">
           <button onClick={toggleDropdown}>
             <img
-              className="h-10 w-10 rounded-full"
+              className="h-10 w-10 rounded-full bg-gray-400"
               src={user.photoURL}
               alt="photo"
             />
