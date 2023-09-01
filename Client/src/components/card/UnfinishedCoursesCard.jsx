@@ -72,7 +72,7 @@ const UnfinishedCoursesCard = ({
               </div>*/}
             </div>
           </div>
-          <Link to={`/course/${id}`}>
+          <Link to={`/user/course/${id}`}>
             <button className="flex items-center justify-start gap-2 rounded-[10px] bg-[#000000] py-2.5 pl-4 pr-2 text-center text-sm font-medium capitalize leading-tight text-white">
               Let's go
               <MdOutlineKeyboardArrowRight size={20} />

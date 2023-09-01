@@ -27,10 +27,10 @@ const ModuleCard = ({ extra, chapterTitle, lessons, id }) => {
                 <p className="text-md dark:text-white">/ 10 min</p>
               </div>
             </div>
-            <hr className=" border-[1px] mb-4 w-60 bg-gray-500 " />
+            <hr className=" mb-4 w-60 border-[1px] bg-gray-500 " />
           </div>
 
-          <div className="mt-1 mb-40 flex flex-col gap-4">
+          <div className="mt-1 mb-40 flex w-60 flex-col gap-4 truncate">
             <Link to={`/user/course/${id}`} className="">
               {lessons.map((lesson, index) => {
                 console.log(id, "Lessonssssbab");

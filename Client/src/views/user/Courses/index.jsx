@@ -99,7 +99,7 @@ const Courses = () => {
             Your Next courses
           </h4>
         </div>
-        <div className="z-20 grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div className="z-20 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {subscribedCourses.courses?.map((subscribed, id) => (
             <CourseCard
               key={id}
