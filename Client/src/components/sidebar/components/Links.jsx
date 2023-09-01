@@ -34,7 +34,7 @@ export function SidebarLinks(props) {
                 <span
                   className={`${
                     activeRoute(route.path) === true
-                      ? "font-bold text-orange-400 dark:text-white"
+                      ? "font-bold text-orange-400 dark:text-orange-400"
                       : "font-medium text-orange-400"
                   }`}
                 >
@@ -43,16 +43,13 @@ export function SidebarLinks(props) {
                 <p
                   className={`leading-1 ml-4 flex ${
                     activeRoute(route.path) === true
-                      ? "font-bold text-orange-400 dark:text-white"
+                      ? "font-bold text-orange-400 dark:text-orange-400"
                       : "font-medium text-white"
                   }`}
                 >
                   {route.name}
                 </p>
               </li>
-              {activeRoute(route.path) ? (
-                <div className="absolute right-0 top-px h-9 w-1 rounded-lg bg-orange-400 dark:bg-orange-400" />
-              ) : null}
             </div>
           </Link>
         );

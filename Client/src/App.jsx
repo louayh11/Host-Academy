@@ -6,6 +6,8 @@ import UserLayout from "./layouts/user";
 import AuthLayout from "./layouts/auth";
 import AdminLayout from "./layouts/admin";
 import ProtectedRoute from "./layouts/ProtectedRoute/ProtectedRoute";
+import { useUserAuth } from "context/UserAuthContext";
+import { getAuth, browserLocalPersistence } from "firebase/auth";
 
 const App = () => {
   return (
@@ -18,7 +20,6 @@ const App = () => {
         <Route path="admin/*" element={<AdminLayout />} />
       </Route>
 
-      {/* Redirect to root if no matching route */}
       <Route path="/" element={<Navigate to="/home" replace />} />
     </Routes>
   );

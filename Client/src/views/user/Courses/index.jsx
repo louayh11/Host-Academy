@@ -51,7 +51,7 @@ const Courses = () => {
       <div className="col-span-2 h-fit w-full xl:col-span-1 2xl:col-span-2">
         <div className="mx-auto py-10">
           <div className="flex items-center justify-between pb-8 pr-2">
-            <p className="text-left text-2xl font-bold text-[#000000]">
+            <p className="text-left text-2xl font-bold text-[#000000] dark:text-white">
               YOUR COURSES
             </p>
             <div className="flex items-center">
