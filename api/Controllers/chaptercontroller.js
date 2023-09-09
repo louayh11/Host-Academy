@@ -3,6 +3,7 @@
 const firebase = require("../db");
 const firestore = firebase.firestore();
 const chapter = require("../models/chapter.model");
+const ytdl = require('ytdl-core');
 
 /****************************************************** */
 const addchapter = async (req, res, next) => {
@@ -46,10 +47,13 @@ const addLesson = async (req, res, next) => {
     const courseRef = firestore.collection("courses").doc(courseId);
     const chapterRef = courseRef.collection("chapters").doc(chapterId);
 
+    const videoInfo = await ytdl.getBasicInfo(lessonVideo);
+    const duration= Math.floor(parseInt(videoInfo.videoDetails.lengthSeconds)/60);
     const lessonData = {
       LessonTitle,
       lessonVideo,
       LessonDescription,
+      duration:duration
     };
 
     const lessonRef = await chapterRef.collection("lessons").add(lessonData);

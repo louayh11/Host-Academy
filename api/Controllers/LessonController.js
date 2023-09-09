@@ -1,12 +1,27 @@
 const firebase = require("../db");
 const Course = require("../models/course.model");
 const firestore = firebase.firestore();
+const youtubeDlExec = require('youtube-dl-exec');
 
 const addLessonToChapter = async (req, res, next) => {
   try {
     const courseId = req.params.courseId;
     const chapterId = req.params.chapterId;
    
+
+    const youtubeUrl = req.body.lessonVideo;
+    const videoInfo = await youtubeDlExec.getInfo(youtubeUrl);
+    
+    const durationInSeconds = videoInfo.duration;
+    console.log("🚀 ~ file: LessonController.js:16 ~ addLessonToChapter ~ durationInSeconds:", durationInSeconds)
+    console.log("🚀 ~ file: LessonController.js:16 ~ addLessonToChapter ~ durationInSeconds:", durationInSeconds)
+    console.log("🚀 ~ file: LessonController.js:16 ~ addLessonToChapter ~ durationInSeconds:", durationInSeconds)
+    console.log("🚀 ~ file: LessonController.js:16 ~ addLessonToChapter ~ durationInSeconds:", durationInSeconds)
+    console.log("🚀 ~ file: LessonController.js:16 ~ addLessonToChapter ~ durationInSeconds:", durationInSeconds)
+    console.log("🚀 ~ file: LessonController.js:16 ~ addLessonToChapter ~ durationInSeconds:", durationInSeconds)
+    console.log("🚀 ~ file: LessonController.js:16 ~ addLessonToChapter ~ durationInSeconds:", durationInSeconds)
+    console.log("🚀 ~ file: LessonController.js:16 ~ addLessonToChapter ~ durationInSeconds:", durationInSeconds)
+    res.json({ length: durationInSeconds });
 
     const courseRef = firestore.collection("courses").doc(courseId);
     const chapterRef = courseRef.collection("chapters").doc(chapterId);
@@ -29,6 +44,7 @@ const addLessonToChapter = async (req, res, next) => {
     res.status(400).send(error.message);
   }
 };
+
 
 module.exports = {
   addLessonToChapter,

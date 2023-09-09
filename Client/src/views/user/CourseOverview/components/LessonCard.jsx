@@ -7,6 +7,8 @@ const LessonCard = ({
   lessonVideo,
   content,
   userpic,
+  onQuizzClick,
+  onFinalExamClick,
 }) => {
   return (
     <div className="rounded-2xl bg-white p-4 shadow-lg">
@@ -16,11 +18,11 @@ const LessonCard = ({
       <div className="mb-4 h-full w-full overflow-hidden rounded-3xl border-2 border-gray-300 bg-gray-100">
         <ReactPlayer
           url={lessonVideo}
+          controls={false}
           volume={0.6}
           muted={false}
           loop={true}
           width="100%"
-          controls
         />
       </div>
 
@@ -34,10 +36,16 @@ const LessonCard = ({
       </div>
       <p>{content}</p>
       <div className="flex flex-row-reverse gap-3">
-        <button className="mt-4 flex items-center justify-start gap-2 rounded-[10px] bg-[#000000] py-4 pl-6 pr-6 text-center text-sm font-medium capitalize leading-tight text-white">
+        <button                                   onClick={() => {
+                                      onQuizzClick();
+                                  }}
+                                  className="mt-4 flex items-center justify-start gap-2 rounded-[10px] bg-[#000000] py-4 pl-6 pr-6 text-center text-sm font-medium capitalize leading-tight text-white">
           Test Your Knowledge
         </button>
-        <button className="border-zinc-100 mt-4  inline-flex  items-center justify-start gap-3 rounded-[10px] border py-4  pl-6 pr-6 text-center text-sm font-medium capitalize leading-tight ">
+        <button   onClick={() => {
+                    onFinalExamClick(); // Handle the click event for the final exam
+                  }}
+                  className="border-zinc-100 mt-4  inline-flex  items-center justify-start gap-3 rounded-[10px] border py-4  pl-6 pr-6 text-center text-sm font-medium capitalize leading-tight ">
           Skip To the Test
         </button>
       </div>

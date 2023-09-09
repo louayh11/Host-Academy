@@ -139,6 +139,8 @@ useEffect(() => {
             content={selectedLesson?.LessonDescription}
             lessonVideo={selectedLesson?.lessonVideo}
             userpic={courseData?.instructor.userpic}
+            onQuizzClick={handleQuizzClick}
+            onFinalExamClick={handleFinalExamClick} 
           />
         )}
         {!isFinalExamVisible && isQuizVisible && <Quiz lessonId={lessonId} showLesson={showLesson} nextLessonId={nextLessonId} index={index} onLessonClick={handleLessonClick}/>}
