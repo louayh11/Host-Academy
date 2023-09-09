@@ -3,6 +3,13 @@ import React, { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const Modules = ({ chapters, chaptersLength, id }) => {
+  console.log("chapters", chapters);
+  console.log("chapters", chapters);
+  console.log("chapters", chapters);
+  console.log("chapters", chapters);
+  console.log("chapters", chapters);
+  console.log("chapters", chapters);
+
   const totalCards = chaptersLength;
   const cardsPerPage = 4;
   const [currentPage, setCurrentPage] = useState(1);
