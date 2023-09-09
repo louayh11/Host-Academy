@@ -19,11 +19,12 @@ const CourseCard = ({ title, image, level, price, chaptersnumber, id, onDelete }
     <Card
 
     >
-      <div className="h-full w-[20rem]">
-        <div className="relative w-full">
+      <div className="h-full w-[25rem] lg:w-full lg:px-10">
+        <div className="relative w-full flex justify-center items-center">
           <img
             src={image}
-            className="mb-3 h-56 w-full rounded-xl object-cover 3xl:h-full 3xl:w-full"
+            className="mb-3 h-56 w-full rounded-xl object-cover 3xl:h-full 3xl:w-full "
+            style={{ height: '200px', width: '300px' }}
             alt=""
           />
         </div>
@@ -33,7 +34,7 @@ const CourseCard = ({ title, image, level, price, chaptersnumber, id, onDelete }
             <p className="text-lg font-bold dark:text-black ">{title}</p>
           </div>
         </div>
-        <div className="mt-1  mb-6  flex justify-between">
+        <div className="mt-1  mb-6  flex flex-col md:flex-row justify-between">
           <div className="flex  items-center justify-center gap-3">
             <p className="text-md font-medium text-black"> chapters</p>
             <p className="text-md font-semibold  dark:text-black">{chaptersnumber}</p>
@@ -50,7 +51,7 @@ const CourseCard = ({ title, image, level, price, chaptersnumber, id, onDelete }
         <div className="mt-1  mb-4 flex justify-between">
 
 
-          <button className="flex items-center justify-start gap-2 rounded-[10px] bg-[#000000] py-1 pl-6 pr-2 text-center text-sm font-medium capitalize leading-tight text-white"
+          <button className="flex flex-col md:flex-row  items-center justify-start gap-2 rounded-[10px] bg-[#000000] py-1 pl-6 pr-2 text-center text-sm font-medium capitalize leading-tight text-white"
             onClick={() => handleDeleteCourse()}>  Delete   <MdOutlineKeyboardArrowRight size={20} />
           </button>
 

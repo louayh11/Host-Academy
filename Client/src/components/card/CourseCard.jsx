@@ -23,10 +23,11 @@ const CourseCard = ({
       extra={`flex flex-col w-full h-full !p-4 3xl:p-![18px] bg-white ${extra}`}
     >
       <div className="h-full w-full">
-        <div className="relative w-full">
+        <div className="relative flex w-full items-center justify-center">
           <img
             src={image}
-            className="mb-3 h-56 w-full rounded-xl object-cover 3xl:h-full 3xl:w-full"
+            className="mb-3 h-56 w-full rounded-xl object-cover 3xl:h-full 3xl:w-full "
+            style={{ height: "200px", width: "300px" }}
             alt=""
           />
         </div>

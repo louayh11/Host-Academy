@@ -6,7 +6,6 @@ import { useUserAuth } from "../../../../context/UserAuthContext";
 const YourCourses = () => {
   const { user } = useUserAuth();
   const userId = user?.uid;
-  console.log(userId);
   const {
     data: subscribedCourses,
     isLoading,
@@ -20,7 +19,6 @@ const YourCourses = () => {
   if (isError) {
     return <div className="bg-white px-24">Error fetching courses.</div>;
   }
-  console.log(subscribedCourses, "dodo");
 
   return (
     <div className="mx-auto bg-white py-10  md:px-11 lg:px-24" id="about">

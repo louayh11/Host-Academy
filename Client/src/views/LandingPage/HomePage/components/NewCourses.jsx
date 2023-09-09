@@ -1,12 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiFilter } from "react-icons/fi";
 import { useCourses } from "../../../../hooks/react-query/useCourses";
 import CourseCard from "components/card/CourseCard";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const NewCourses = () => {
   const [currPage, setCurrPage] = useState(0);
 
   const { data: courses, isLoading } = useCourses();
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/categories"
+        );
+        return response.data;
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+        return [];
+      }
+    };
+
+    fetchCategories()
+      .then((data) => setCategories(data))
+      .catch((error) => console.error("Error fetching categories:", error));
+  }, []);
+
 
   const itemsPerPage = 3;
   const totalPages = Math.ceil((courses?.length || 0) / itemsPerPage);
@@ -22,6 +45,22 @@ const NewCourses = () => {
           NEW COURSES
         </p>
         <div className="mt-4 flex justify-center">
+
+        <div className="flex items-center space-x-4">
+  <Link to="/filter/all" className="rounded-md bg-gray-200 px-2 py-2 text-[#000000]">
+    All Courses
+  </Link>
+  {categories.map((category) => (
+    <Link
+      key={category.id}
+      to={`/filter/${category.name}`}
+      className="rounded-md bg-gray-200 px-2 py-2 text-[#000000]"
+    >
+      {category.name}
+    </Link>
+  ))}
+</div>
+
           <button className="text-[#000000] mx-2 rounded-md bg-gray-200 px-2 py-2">
             <FiFilter size={24} color="silver" />
           </button>

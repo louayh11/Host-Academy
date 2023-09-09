@@ -13,8 +13,6 @@ const NewQuiz = ({lessonId ,id}) => {
   }, [lessonId]);
   const handleChoiceChange = (event) => {
     console.log("lesson from index "+lessonId)
-    console.log("lesson from index "+lessonId.lessonId)
-    console.log("lesson from index "+lessonId.lessonId.lessonId)
     setSelectedChoice(event.target.value);
   };
 
@@ -22,7 +20,7 @@ const NewQuiz = ({lessonId ,id}) => {
     <div className="mt-4 p-4 border bg-white rounded-lg shadow-md">
       <h1 className="text-xl font-semibold mb-2">Add New Quiz</h1>
 
-<QuizList lessonId={lessonId.lessonId} />
+<QuizList lessonId={lessonId} />
 <div className="flex space-x-4 mb-10">
   
   <div className="w-full">
@@ -84,9 +82,9 @@ const NewQuiz = ({lessonId ,id}) => {
 </div>
 
 <div className="">
-      {selectedChoice === 'tof' && <TOFComponent lessonId={lessonId.lessonId} />}
-      {selectedChoice === 'qcm' && <QCMComponent lessonId={lessonId.lessonId}/>}
-      {selectedChoice === 'qcu' && <QCUComponent lessonId={lessonId.lessonId}/>}
+      {selectedChoice === 'tof' && <TOFComponent lessonId={lessonId} />}
+      {selectedChoice === 'qcm' && <QCMComponent lessonId={lessonId}/>}
+      {selectedChoice === 'qcu' && <QCUComponent lessonId={lessonId}/>}
       <FinalExamAdd id={id}/>
       </div>
     </div>

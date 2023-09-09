@@ -35,8 +35,9 @@ const ModuleCard = ({ extra, chapterTitle, lessons, id, lesson }) => {
 
           <div className="mt-1 mb-40 flex w-60 flex-col gap-4 truncate">
             <Link to={`/user/course/${id}`} className="">
-              {lessons.map((lesson, index) => {
-                console.log(id, "Lessonssssbab");
+              {
+              
+              lessons.map((lesson, index) => {
                 return <div key={index}>{lesson.LessonTitle}</div>;
               })}
             </Link>

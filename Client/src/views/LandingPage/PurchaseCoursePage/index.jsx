@@ -21,7 +21,6 @@ const PurchaseCourse = () => {
 
   const course = courses.find((c) => c.id === id);
 
-  console.log('iddddd',course.id)
 
   if (!course) {
     return <p>Course not found</p>;

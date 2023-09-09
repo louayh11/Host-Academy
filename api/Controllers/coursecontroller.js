@@ -13,6 +13,9 @@ const addCourse = async (req, res) => {
     const { title, level, instructorId, price, description, imageURL } =
       req.body;
 
+    const category = req.body.category;
+
+    const categoryRef = firestore.collection("categories").doc(category);
     const instructorRef = firestore.collection("users").doc(instructorId);
 
     const instructorSnapshot = await instructorRef.get();
@@ -34,6 +37,7 @@ const addCourse = async (req, res) => {
       },
       price,
       image: imageURL,
+      category: category,
     };
 
     await firestore.collection("courses").add(courseData);
@@ -132,6 +136,12 @@ const getcourse = async (req, res, next) => {
     }
 
     const courseData = courseSnapshot.data();
+    const currentVisitors = courseData.visitors || 0;
+
+    // Increment "visitors" and update the course document
+    await courseRef.update({
+      visitors: currentVisitors + 1,
+    });
 
     const chaptersRef = courseRef.collection("chapters");
     const chaptersSnapshot = await chaptersRef.get();
@@ -195,6 +205,50 @@ const deletecourse = async (req, res, next) => {
     res.status(400).send(error.message);
   }
 };
+
+const getCoursesByCategory = async (req, res, next) => {
+  try {
+    const category = req.params.category;
+
+    const coursesRef = firestore.collection("courses");
+    const querySnapshot = await coursesRef
+      .where("category", "==", category)
+      .get();
+
+    if (querySnapshot.empty) {
+      res.status(404).send("No courses found for the specified category");
+      return;
+    }
+
+    const coursesArray = [];
+
+    for (const courseDoc of querySnapshot.docs) {
+      const courseId = courseDoc.id;
+      const courseData = courseDoc.data();
+      const chaptersRef = coursesRef.doc(courseId).collection("chapters");
+      const chaptersSnapshot = await chaptersRef.get();
+      const chaptersArray = [];
+
+      chaptersSnapshot.forEach((chapterDoc) => {
+        const chapterData = chapterDoc.data();
+        chaptersArray.push(chapterData);
+      });
+
+      const courseWithChapters = {
+        id: courseId,
+        ...courseData,
+        chapters: chaptersArray,
+      };
+
+      coursesArray.push(courseWithChapters);
+    }
+
+    res.send(coursesArray);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
 module.exports = {
   addCourse,
   getAllcourses,
@@ -202,4 +256,5 @@ module.exports = {
   updatecourse,
   deletecourse,
   getImage,
+  getCoursesByCategory,
 };

@@ -1,7 +1,6 @@
 const express = require("express");
 const Courserouter = express.Router();
 const multer = require("multer");
-const authenticateUser = require("../middlewares/authenticateUser");
 
 const {
   addCourse,
@@ -10,6 +9,7 @@ const {
   updatecourse,
   deletecourse,
   getImage,
+  getCoursesByCategory
 } = require("../Controllers/coursecontroller");
 const {
   addchapter,
@@ -21,11 +21,12 @@ const {
   getLesson,
 } = require("../Controllers/chaptercontroller");
 
-const configureStorage = require("../multerconfig");
+const configureStorage = require('../multerconfig');
 
-Courserouter.post("/course", configureStorage(), addCourse);
+Courserouter.post('/course', configureStorage(), addCourse);
 
 Courserouter.get("/courses", getAllcourses);
+Courserouter.get("/courses/category/:category", getCoursesByCategory);
 Courserouter.get("/course/:id", getcourse);
 Courserouter.put("/course/:id", updatecourse);
 Courserouter.delete("/course/:id", deletecourse);

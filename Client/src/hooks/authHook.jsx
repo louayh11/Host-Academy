@@ -60,7 +60,6 @@ function useSignUp() {
       };
       await usersCollection.doc(user.uid).set(userProfileData);
 
-      console.log("user registered:", user);
       navigate("/auth/sign-in");
     } catch (error) {
       const errorCode = error.code;

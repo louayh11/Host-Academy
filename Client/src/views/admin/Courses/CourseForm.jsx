@@ -12,6 +12,22 @@ export default function CourseForm() {
   const [errorAlert, setErrorAlert] = useState(false);
    const [uploadProgress, setUploadProgress] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [categories, setCategories] = useState([]); 
+
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const response = await axios.get("http://localhost:5000/api/categories"); // Replace with your actual API endpoint for categories
+        const fetchedCategories = response.data;
+        
+        setCategories(fetchedCategories);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchCategories();
+  }, []);
 
  
   const handleFormSubmit = async (e) => {
@@ -220,6 +236,27 @@ export default function CourseForm() {
               required
             />
           </div>
+          <div>
+        <label
+          className="text-sm font-bold text-navy-700 dark:text-white"
+          htmlFor="category"
+        >
+          Category
+        </label>
+        <select
+          name="category"
+          id="category"
+          className="mt-2 block w-full rounded-md border border-gray-500 bg-white px-4 py-2 text-sm font-bold text-navy-700 focus:border-orange-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-500 dark:text-white dark:focus:border-orange-500"
+          required
+        >
+          <option value="">Select a category</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.name}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+      </div>
         </div>
 
         <div class="mt-6 flex justify-end">

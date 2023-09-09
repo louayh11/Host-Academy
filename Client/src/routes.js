@@ -24,6 +24,7 @@ import SignUp from "views/auth/SignUp";
 import NewQuiz from "views/admin/quiz";
 import Validate from "views/user/FinalExam/components/Validate";
 import PurchaseCourse from "views/LandingPage/PurchaseCoursePage";
+import FilteredCourses from "views/LandingPage/HomePage/components/FilteredCourses";
 
 const routes = [
   {
@@ -114,6 +115,13 @@ const routes = [
     layout: "/general",
     path: "/courseDetails/:id",
     component: <PurchaseCourse />,
+  },
+  {
+    name: "filter",
+    layout: "/general",
+    path: "filter/:by",
+    component: <FilteredCourses />,
+    hideInSidebar: true,
   },
 
   {

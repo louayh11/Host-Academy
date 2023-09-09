@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import chapterIcon from "../../assets/icons/chapter/Vector.png";
-
+import tick from "../../assets/icons/tick.png";
 const ChaptersCard = ({
   chapters = [],
   onLessonClick,
@@ -102,7 +102,7 @@ const ChaptersCard = ({
                           <span
                             className={`py-2 pl-4 ${
                               progress >= lessonIndex
-                                ? "cursor-pointer py-2 pl-4 hover:text-yellow-500"
+                                ? "cursor-pointer py-2 pl-4 flex flex-row justify-between hover:text-yellow-500"
                                 : "cursor-not-allowed text-gray-400"
                             }`}
                             onClick={() => {
@@ -110,7 +110,9 @@ const ChaptersCard = ({
                             }}
                           >
                             {lesson.LessonTitle}
+                            
                           </span>
+
                           {/* Quizzes */}
                           {
                             <ul className=" mt-2 list-disc  pl-4">
@@ -119,14 +121,14 @@ const ChaptersCard = ({
                                   key={lessonIndex}
                                   onClick={() => {
                                     if (progress >= lessonIndex)
-                                      onQuizzClick(lessonIndex,nextLessonId);
+                                      onQuizzClick(lessonIndex, nextLessonId);
                                   }}
                                   className="cursor-pointer py-2"
                                 >
                                   <span
                                     className={`py-2 pl-4 ${
                                       progress >= lessonIndex
-                                        ? "cursor-pointer py-2 pl-4 hover:text-yellow-500"
+                                        ? "cursor-pointer py-2 pl-4 flex flex-row justify-between hover:text-yellow-500"
                                         : "cursor-not-allowed text-gray-400"
                                     }`}
                                   >
@@ -136,15 +138,20 @@ const ChaptersCard = ({
                               )}
 
                               <>
+                              <div className=" flex flex-row justify-between ">
                                 <p
                                   key={lessonIndex}
                                   onClick={() => {
                                     if (progress >= lessonIndex)
-                                    onQuizzClick(lessonIndex,nextLessonId);
+                                      onQuizzClick(lessonIndex, nextLessonId);
                                   }}
                                 >
                                   Quick Quiz {lessonIndex}
                                 </p>
+                                {progress > lessonIndex && (
+                             <img src={tick} alt="done" className="w-4 h-4 ml-2 text-green-500 my-1" />
+                            )}
+                            </div>
                               </>
                             </ul>
                           }
@@ -158,7 +165,7 @@ const ChaptersCard = ({
                 <li
                   key="final-assessment"
                   onClick={() => {
-                    onFinalExamClick(index); // Handle the click event for the final exam
+                    onFinalExamClick(index);
                   }}
                   className="cursor-pointer py-2"
                 >

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const Modules = ({ chapters, chaptersLength, id }) => {
+
   const totalCards = chaptersLength;
   const cardsPerPage = 4;
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,7 +40,7 @@ const Modules = ({ chapters, chaptersLength, id }) => {
 
         <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {chapters.map((module, index) => {
-            console.log(module.lessons, "module.lessons"); // Verify that module.lessons is the array of lessons
+            // Verify that module.lessons is the array of lessons
             return (
               <ModuleCard
                 key={index}

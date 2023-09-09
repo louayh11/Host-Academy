@@ -63,7 +63,6 @@ const addLesson = async (req, res, next) => {
 
     // Inclure l'ID dans la réponse
     res.send({ message: "Lesson added successfully", lessonId: newLessonId });
-    console.log("hh"+newLessonId)
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -148,7 +147,6 @@ const getAllChapters = async (req, res, next) => {
       const chapterData = doc.data();
       const chapterId = doc.id; // Get the ID of the document
       chapters.push({ id: chapterId, ...chapterData }); // Include the id in the chapter object
-      console.log(chapterId);
       
     });
 
