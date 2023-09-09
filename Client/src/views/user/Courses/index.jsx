@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 //----------------------------hooks----------------------//
-import { useSubscribedCourses } from "../../../hooks/react-query/useCourses";
+import {
+  useSubscribedCourses,
+  useUnfinishedCourses,
+} from "../../../hooks/react-query/useCourses";
 import useFetchCourses from "../../../hooks/courseHook";
 //----------------------------cards----------------------//
 import UnfinishedCoursesCard from "components/card/UnfinishedCoursesCard";
@@ -16,11 +19,15 @@ const Courses = () => {
 
   const {
     data: subscribedCourses,
-    isLoading,
+    isLoading: subscribedCoursesIsLoading,
     isError,
   } = useSubscribedCourses(userId);
-  console.log("xxxxxxxxxxxxx", subscribedCourses);
   const AllCourses = useFetchCourses();
+
+  const { data: unfinishedCourses, isLoading: unfinishedCoursesIsLoading } =
+    useUnfinishedCourses(userId);
+
+  console.log(unfinishedCourses, "boba");
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 2;
@@ -38,7 +45,11 @@ const Courses = () => {
   );*/
   }
 
-  if (isLoading) {
+  if (subscribedCoursesIsLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (unfinishedCoursesIsLoading) {
     return <div>Loading...</div>;
   }
 
@@ -73,8 +84,8 @@ const Courses = () => {
               )}
             </div>
           </div>
-          {/* <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2">
-            {subscribedCourses?.map((subscribed, id) => (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2">
+            {unfinishedCourses?.courses?.map((subscribed, id) => (
               <div key={id} className="pr-2">
                 <UnfinishedCoursesCard
                   id={subscribed?.id}
@@ -91,15 +102,15 @@ const Courses = () => {
                 />
               </div>
             ))}
-                 </div>*/}
+          </div>
         </div>
 
         <div className="mb-4 mt-5 flex flex-col justify-between md:flex-row md:items-center">
-          <h4 className="text-2xl font-bold dark:text-white">
+          <h4 className="text-2xl font-bold uppercase dark:text-white">
             Your Next courses
           </h4>
         </div>
-        <div className="z-20 grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div className="z-20 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {subscribedCourses.courses?.map((subscribed, id) => (
             <CourseCard
               key={id}

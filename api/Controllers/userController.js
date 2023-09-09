@@ -373,7 +373,89 @@ const getUserProgress = async (req, res) => {
   return res.status(200).json({ progress: subscriptionData.progress });
 };
 
+const GetUserUnfinishedCourses = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const userRef = firestore.collection("users").doc(userId);
+    const userDoc = await userRef.get();
+
+    if (!userDoc.exists) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Query subscriptions where progress is at least 1
+    const subscriptionRef = firestore
+      .collection("subscriptions")
+      .where("userId", "==", userId)
+      .where("progress", ">=", 1);
+
+    const subscriptionSnapshot = await subscriptionRef.get();
+
+    if (subscriptionSnapshot.empty) {
+      return res.status(200).json({
+        message: `User has not subscribed to any courses with progress >= 1`,
+        courses: [],
+      });
+    }
+
+    const courses = [];
+
+    for (const doc of subscriptionSnapshot.docs) {
+      const courseId = doc.data().courseId;
+      const progress = doc.data().progress;
+      const courseRef = firestore.collection("courses").doc(courseId);
+      const courseDoc = await courseRef.get();
+
+      if (courseDoc.exists) {
+        const courseData = courseDoc.data();
+        courseData.id = courseId;
+
+        // Fetch associated chapters for the course
+        const chaptersSnapshot = await courseRef.collection("chapters").get();
+        const chapters = [];
+
+        for (const chapterDoc of chaptersSnapshot.docs) {
+          const chapterData = chapterDoc.data();
+          chapterData.id = chapterDoc.id;
+
+          // Fetch associated lessons for the chapter
+          const lessonsSnapshot = await chapterDoc.ref
+            .collection("lessons")
+            .get();
+          const lessons = lessonsSnapshot.docs.map((lessonDoc) =>
+            lessonDoc.data()
+          );
+
+          chapterData.lessons = lessons;
+          chapters.push(chapterData);
+        }
+
+        courseData.chapters = chapters;
+
+        const totalLessons = chapters.reduce(
+          (sum, chapter) => sum + chapter.lessons.length,
+          0
+        );
+
+        const progressPercentage = (progress / totalLessons) * 100;
+        courseData.progress = `${progressPercentage.toFixed(2)}%`;
+
+        courses.push(courseData);
+      }
+    }
+
+    return res.status(200).json({
+      message: `User's subscribed courses with progress >= 1 retrieved successfully`,
+      courses: courses,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
+  GetUserUnfinishedCourses,
   GetCertificatesForUser,
   GetAllUsers,
   SubscribeToCourse,

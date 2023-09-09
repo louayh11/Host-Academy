@@ -1,14 +1,12 @@
 import { Outlet, useLocation, Navigate } from "react-router-dom";
-import { projectAuth } from "../../config/firebase";
-import { useUserAuth } from "../../context/UserAuthContext";
 
 const PrivateRoutesLayout = () => {
+  const userString = localStorage.getItem("user");
+  const user = JSON.parse(userString);
   const location = useLocation();
-
-  return projectAuth.currentUser ? (
+  return user ? (
     <Outlet />
   ) : (
-    // keep the previous navigation stack
     <Navigate to="/auth/sign-in" state={{ from: location }} replace />
   );
 };

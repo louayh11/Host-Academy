@@ -28,8 +28,6 @@ export default function SignIn() {
       const token = await user.getIdToken();
       console.log("token", token);
 
-      localStorage.setItem("userToken", token);
-
       const response = await fetch(
         `http://localhost:5000/api/get-user-role/${user.uid}`
       );
