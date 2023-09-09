@@ -52,8 +52,8 @@ const FilteredCourses = () => {
     <div>
       <div className="mx-auto bg-white py-10  md:px-11 lg:px-24" id="about">
         <div className="flex justify-center">
-          <div className="w-[65%] items-center">
-            <h1 className="thats-right-great mt-5 mb-10 pb-5 text-5xl font-bold">
+          <div className="w-[40%] items-center">
+            <h1 className="thats-right-great mt-5 mb-10 pb-5 text-4xl font-bold">
               Search Between <span className="text-red-500">100</span> Courses
               And Find Your Favorite Course
             </h1>

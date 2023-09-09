@@ -384,17 +384,16 @@ const GetUserUnfinishedCourses = async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
 
-    // Query subscriptions where progress is at least 1
+    // Query all subscriptions for the user
     const subscriptionRef = firestore
       .collection("subscriptions")
-      .where("userId", "==", userId)
-      .where("progress", ">=", 1);
+      .where("userId", "==", userId);
 
     const subscriptionSnapshot = await subscriptionRef.get();
 
     if (subscriptionSnapshot.empty) {
       return res.status(200).json({
-        message: `User has not subscribed to any courses with progress >= 1`,
+        message: `User has not subscribed to any courses`,
         courses: [],
       });
     }
@@ -407,7 +406,7 @@ const GetUserUnfinishedCourses = async (req, res) => {
       const courseRef = firestore.collection("courses").doc(courseId);
       const courseDoc = await courseRef.get();
 
-      if (courseDoc.exists) {
+      if (courseDoc.exists && progress >= 1) {
         const courseData = courseDoc.data();
         courseData.id = courseId;
 
@@ -437,9 +436,6 @@ const GetUserUnfinishedCourses = async (req, res) => {
           (sum, chapter) => sum + chapter.lessons.length,
           0
         );
-
-        const progressPercentage = (progress / totalLessons) * 100;
-        courseData.progress = `${progressPercentage.toFixed(2)}%`;
 
         courses.push(courseData);
       }
