@@ -18,7 +18,7 @@ export default function General() {
     <div>
       <main>
         <LandingNavBar />
-        <div className=" min-h-[84vh] mx-auto mb-auto h-full">
+        <div className=" mx-auto mb-auto h-full min-h-[84vh]">
           <Routes>
             {getRoutes(routes)}
 

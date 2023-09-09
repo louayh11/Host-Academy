@@ -39,7 +39,7 @@ const Modules = ({ chapters, chaptersLength, id }) => {
 
         <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {chapters.map((module, index) => {
-            console.log(module.lessons, "module");
+            console.log(module.lessons, "module.lessons"); // Verify that module.lessons is the array of lessons
             return (
               <ModuleCard
                 key={index}

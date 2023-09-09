@@ -2,7 +2,7 @@ import React from "react";
 import Card from "components/card";
 import { Link } from "react-router-dom";
 
-const ModuleCard = ({ extra, chapterTitle, lessons, id }) => {
+const ModuleCard = ({ extra, chapterTitle, lessons, id, lesson }) => {
   return (
     <div>
       {" "}
@@ -24,7 +24,10 @@ const ModuleCard = ({ extra, chapterTitle, lessons, id }) => {
             <div className="mt-1 mb-2 flex justify-between">
               <div className="flex  items-center justify-center gap-1">
                 <p className="text-md dark:text-white">2 Lessons </p>
-                <p className="text-md dark:text-white">/ 10 min</p>
+                <p className="text-md dark:text-white">
+                  / {/*lesson.duration*/}
+                </p>
+                ;
               </div>
             </div>
             <hr className=" mb-4 w-60 border-[1px] bg-gray-500 " />
