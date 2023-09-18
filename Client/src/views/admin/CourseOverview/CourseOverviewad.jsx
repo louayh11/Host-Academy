@@ -14,11 +14,6 @@ const CourseOverviewad = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    
-    console.log(selectedLessonId)
-    console.log(selectedLessonId)
-    console.log(selectedLessonId)
-    console.log(selectedLessonId)
     fetch(`http://localhost:5000/api/course/${id}`)
       .then((res) => res.json())
       .then((data) => {

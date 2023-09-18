@@ -304,18 +304,20 @@ async function checkAnswer(req, res, next) {
     const querySnapshot = await coursesRef.get();
 
     let foundCourseId = null;
-
+    let ProgressMax=0
     for (const doc of querySnapshot.docs) {
       const courseId = doc.id;
       const chaptersRef = coursesRef.doc(courseId).collection("chapters");
       const chaptersSnapshot = await chaptersRef.get();
-
+    
    
       for (const chapterDoc of chaptersSnapshot.docs) {
         const chapterId = chapterDoc.id;
         const lessonRef = chaptersRef.doc(chapterId).collection("lessons");
         const lessonSnapshot = await lessonRef.get();
+        ProgressMax++;
         for (const lessonDoc of lessonSnapshot.docs) {
+        
           const lessonId = lessonDoc.id;
           if (lessonId === lesson) {
             console.log("This is the course that has it all:", courseId);
@@ -345,9 +347,16 @@ async function checkAnswer(req, res, next) {
       });
 
       const subscriptionToUpdate = matchingSubscriptions[0];
-
+      let updatedProgress;
       if (subscriptionToUpdate) {
-        const updatedProgress = ++subscriptionToUpdate.progress;
+        if(ProgressMax==(subscriptionToUpdate.progress+1)){
+          if (ProgressMax == subscriptionToUpdate.progress + 1) {
+            updatedProgress = Math.floor(subscriptionToUpdate.progress / 10) * 10 + 10;
+            
+          }
+        }else{
+
+         updatedProgress = ++subscriptionToUpdate.progress;}
 
         db.collection("subscriptions")
           .doc(subscriptionToUpdate.id)

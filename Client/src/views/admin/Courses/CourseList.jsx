@@ -38,6 +38,20 @@ const CourseList = (props) => {
 
   return (
     <Card extra={"w-full h-full p-4 sm:overflow-x-auto"}>
+          <div class="relative flex items-center justify-between mb-8">
+        <div class="text-xl font-bold  dark:text-white">Add category</div>
+        <Link to={`formCategory`}>
+          <button
+            className={`flex items-center text-xl hover:cursor-pointer ${
+              transparent
+                ? "bg-none text-white hover:bg-none active:bg-none"
+                : "bg-lightPrimary p-2 text-brand-500 hover:bg-gray-100 dark:bg-navy-700 dark:text-white dark:hover:bg-white/20 dark:active:bg-white/10"
+            } linear justify-center rounded-lg font-bold transition duration-200`}
+          >
+            <BsPlus style={{ color: "black" }} size={30} />
+          </button>
+        </Link>
+      </div>
       <div class="relative flex items-center justify-between">
         <div class="text-xl font-bold  dark:text-white">Your courses</div>
         <Link to={`form`}>

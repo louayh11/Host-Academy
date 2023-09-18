@@ -8,9 +8,6 @@ const Quiz = ({ lessonId, nextLessonId ,showLesson,onLessonClick,index}) => {
   const userString = localStorage.getItem("user");
   const user = JSON.parse(userString);
 
-  console.log("lessonId:", lessonId);
-  console.log("nextLessonId:", nextLessonId);
-
   const [userAnswers, setUserAnswers] = useState([]);
   const [quizIds, setQuizIds] = useState([]);
   const [score, setScore] = useState(null);

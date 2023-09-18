@@ -47,6 +47,7 @@ const FilteredCourses = () => {
 
   const itemsPerPage = 8;
   const totalPages = Math.ceil(AllCourses.length / itemsPerPage);
+  const activeCategory = by === "all" ? "all courses" : by;
 
   return (
     <div>
@@ -70,31 +71,39 @@ const FilteredCourses = () => {
             onChange={(e) => setSearchQuery(e.target.value)} // Update search query
           />
         </div>
-        <div className="flex items-end justify-between pb-8">
+        <div className="flex items-end justify-between pb-8 my-8">
           <p className="text-left text-2xl font-bold text-[#000000]">COURSES</p>
           <div className="mt-4 flex justify-center">
-            <div className="flex items-center space-x-4">
-              <Link
-                to="/filter/all"
-                className="rounded-md bg-gray-200 px-2 py-2 text-[#000000]"
-              >
-                All Courses
-              </Link>
-              {categories.map((category) => (
-                <Link
-                  key={category.id}
-                  to={`/filter/${category.name}`}
-                  className="rounded-md bg-gray-200 px-2 py-2 text-[#000000]"
-                >
-                  {category.name}
-                </Link>
-              ))}
-            </div>
+          <div className="flex items-center space-x-5">
+          <Link
+            to="/filter/all"
+            className={`rounded-md  font-bold px-6 py-3  ${
+              activeCategory === "all courses"
+                ? "shadow-lg rounded-2xl bg-gray-100  text-[#000000]"
+                : null
+            }`}
+          >
+            All Courses
+          </Link>
+          {categories.map((category) => (
+            <Link
+              key={category.id}
+              to={`/filter/${category.name}`}
+              className={`rounded-md  font-bold px-6 py-3  ${
+                activeCategory === category.name
+                ? "shadow-lg rounded-2xl bg-gray-100 text-[#000000]"
+                : null
+              }`}
+            >
+              {category.name}
+            </Link>
+          ))}
+        </div>
 
-            <button className="mx-2 rounded-md bg-gray-200 px-2 py-2 text-[#000000]">
-              <FiFilter size={24} color="silver" />
-            </button>
-          </div>
+        <button className="mx-2 ml-4 rounded-md bg-gray-200 px-2 py-2 text-[#000000]">
+          <FiFilter size={24} color="silver" />
+        </button>
+      </div>
         </div>
 
         <div className="grid gap-8 px-12 pb-16 sm:grid-cols-2 sm:px-0 md:grid-cols-2 lg:grid-cols-3">

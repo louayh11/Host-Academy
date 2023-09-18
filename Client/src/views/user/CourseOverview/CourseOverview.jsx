@@ -20,7 +20,7 @@ const [progress, setProgress] = useState(null);
 
 
 const handleFinalExamClick = (finalExamIndex) => {
-  setSelectedFinalExamIndex(finalExamIndex);
+  setSelectedFinalExamIndex();
   setIsFinalExamVisible(true);
 };
 
@@ -34,7 +34,6 @@ useEffect(() => {
     fetch(`http://localhost:5000/api/course/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data, "baba");
         setCourseData(data);
       })
       .catch((err) => {
@@ -68,7 +67,7 @@ useEffect(() => {
     };
 
     fetchData();
-  }, []);
+  }, [progress]);
 
   const handleChapterClick = (chapterIndex) => {
     setSelectedChapterIndex(chapterIndex);
@@ -103,8 +102,16 @@ useEffect(() => {
 
   const handleLessonClick = (lessonIndex) => {
     setSelectedLessonIndex(lessonIndex);
-    if(lessonIndex>progress){
-
+    const getProgressR=(a)=>{
+    
+      if(progress>a && progress-(a+10)>=0)
+      return getProgressR(a+10)
+      else
+      return progress-a
+        }
+      
+        const newProgress=getProgressR(0)
+    if(lessonIndex>newProgress){
     setProgress(progress+1)
   }
   };

@@ -25,6 +25,7 @@ import NewQuiz from "views/admin/quiz";
 import Validate from "views/user/FinalExam/components/Validate";
 import PurchaseCourse from "views/LandingPage/PurchaseCoursePage";
 import FilteredCourses from "views/LandingPage/HomePage/components/FilteredCourses";
+import Category from "views/admin/Courses/Category";
 
 const routes = [
   {
@@ -97,6 +98,15 @@ const routes = [
     component: <CourseForm />,
     hideInSidebar: true,
   },
+  {
+    name: "formCategory",
+    layout: "/admin",
+    path: "Courses/formCategory",
+    component: <Category />,
+    hideInSidebar: true,
+  },
+
+
   {
     name: "Certificates",
     layout: "/user",

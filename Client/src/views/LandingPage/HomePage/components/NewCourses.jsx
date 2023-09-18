@@ -47,21 +47,21 @@ const NewCourses = () => {
         <div className="mt-4 flex justify-center">
 
         <div className="flex items-center space-x-4">
-  <Link to="/filter/all" className="rounded-md bg-gray-200 px-2 py-2 text-[#000000]">
+  <Link to="/filter/all" className=" shadow-lg font-bold rounded-2xl bg-gray-100 px-6 py-3 text-[#000000]">
     All Courses
   </Link>
   {categories.map((category) => (
     <Link
       key={category.id}
       to={`/filter/${category.name}`}
-      className="rounded-md bg-gray-200 px-2 py-2 text-[#000000]"
+      className="rounded-md  font-bold px-6 py-3 text-[#000000]"
     >
       {category.name}
     </Link>
   ))}
 </div>
 
-          <button className="text-[#000000] mx-2 rounded-md bg-gray-200 px-2 py-2">
+<button className="mx-2 ml-4 rounded-md bg-gray-200 px-2 py-2 text-[#000000]">
             <FiFilter size={24} color="silver" />
           </button>
         </div>

@@ -32,6 +32,12 @@ const getAllCategories = async (req, res) => {
 const addCategory = async (req, res) => {
     try {
       const { name, description } = req.body;
+      console.log("🚀 ~ file: categoryController.js:35 ~ addCategory ~ req.body:", req.body)
+      console.log("🚀 ~ file: categoryController.js:35 ~ addCategory ~ req.body:", req.body)
+      console.log("🚀 ~ file: categoryController.js:35 ~ addCategory ~ req.body:", req.body)
+      console.log("🚀 ~ file: categoryController.js:35 ~ addCategory ~ req.body:", req.body)
+      console.log("🚀 ~ file: categoryController.js:35 ~ addCategory ~ req.body:", req.body)
+      console.log("🚀 ~ file: categoryController.js:35 ~ addCategory ~ req.body:", req.body)
   
 
       
