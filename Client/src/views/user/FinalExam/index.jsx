@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Question from "./components/question";
 import Ready from "./components/Ready";
 import Validate from "./components/Validate";
+import Fail from "../quizzPage/components/results/fail";
 
 const FinalExam = ({id}) => {
   const [questions, setQuestions] = useState([]);
@@ -48,8 +49,8 @@ const FinalExam = ({id}) => {
             console.log("🚀 ~ file: index.jsx:46 ~ handleSubmit2 ~ data:", data)
             if (data.score === 100) {
               setScore(data.score);
-              setShowValidate(true); 
             }
+            setShowValidate(true); 
           })
           .catch(error => console.error("Error sending data:", error));
       };
@@ -76,8 +77,11 @@ const FinalExam = ({id}) => {
 
   return (
     <>
-      {score !== 100 &&
-  
+      {score !== 100 && showValidate ? (
+      <div>
+        <Fail />
+      </div>
+    ) :(
     <div className="mt-4 rounded-lg border bg-white p-4 shadow-md">
       
       <div className="mx-12">
@@ -115,7 +119,7 @@ const FinalExam = ({id}) => {
           </button>
         </div>
       </div>
-    </div>}
+    </div>)}
     { score === 100 && showValidate && <Validate />}
     </>
   );
