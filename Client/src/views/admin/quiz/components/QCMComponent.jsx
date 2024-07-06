@@ -26,7 +26,7 @@ const QCMComponent = () => {
       rightAnswer: rightAnswer.map((index) => `option${parseInt(index)}`)
     };
 
-    fetch('http://localhost:5000/api/quizzes/add/'+lessonId.lessonId, {
+    fetch('https://api-academy.tabaani.co/api/quizzes/add/'+lessonId.lessonId, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -29,7 +29,7 @@ export default function SignIn() {
       console.log("token", token);
 
       const response = await fetch(
-        `http://localhost:5000/api/get-user-role/${user.uid}`
+        `https://api-academy.tabaani.co/api/get-user-role/${user.uid}`
       );
       const data = await response.json();
 

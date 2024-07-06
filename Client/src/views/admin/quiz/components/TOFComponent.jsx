@@ -19,7 +19,7 @@ const TOFComponent = (lessonId) => {
       rightAnswer: selectedChoice=="true"?["option1"]:["option2"]
     };
 
-    fetch("http://localhost:5000/api/quizzes/addt_f/"+ lessonId.lessonId, {
+    fetch("https://api-academy.tabaani.co/api/quizzes/addt_f/"+ lessonId.lessonId, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

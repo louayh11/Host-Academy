@@ -14,7 +14,7 @@ const CourseOverviewad = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/course/${id}`)
+    fetch(`https://api-academy.tabaani.co/api/course/${id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

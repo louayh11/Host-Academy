@@ -12,7 +12,7 @@ const CourseList = (props) => {
     // Fetch course data from your Node.js backend API
     const fetchCourses = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/courses");
+        const response = await axios.get("https://api-academy.tabaani.co/api/courses");
         setCoursesData(response.data);
         console.log("hh"+coursesData);
       } catch (error) {
@@ -24,7 +24,7 @@ const CourseList = (props) => {
   }, []);
   const handleDeleteCourse = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/course/${id}`);
+      await axios.delete(`https://api-academy.tabaani.co/api/course/${id}`);
       // Supprimer le cours du tableau des cours locaux
       setCoursesData((prevCourses) =>
         prevCourses.filter((course) => course.id !== id)

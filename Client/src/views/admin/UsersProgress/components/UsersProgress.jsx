@@ -25,7 +25,7 @@ const ComplexTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/users"); // Replace USER_ID with the actual user ID
+        const response = await axios.get("https://api-academy.tabaani.co/api/users"); // Replace USER_ID with the actual user ID
         const responseData = response.data;
         console.log(responseData.usersWithCourses);
         // Check if the response has usersWithCourses array

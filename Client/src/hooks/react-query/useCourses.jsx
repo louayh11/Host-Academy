@@ -2,7 +2,7 @@ import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const url = process.env.URL || "http://localhost:5000";
+const url = process.env.URL || "https://api-academy.tabaani.co";
 
 export const useCourses = () => {
   return useQuery({
@@ -21,7 +21,7 @@ export const useSubscribedCourses = (userId) => {
     queryFn: async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/api/user/${userId}/subscribed-courses`
+          `https://api-academy.tabaani.co/api/user/${userId}/subscribed-courses`
         );
 
         return data;
@@ -39,7 +39,7 @@ export const useUnfinishedCourses = (userId) => {
     queryFn: async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/api/user/${userId}/unfinished-courses`
+          `https://api-academy.tabaani.co/api/user/${userId}/unfinished-courses`
         );
 
         return data;
@@ -57,7 +57,7 @@ export const useSubscribeToCourse = () => {
   return useMutation(
     async ({ courseId, userId }) => {
       await axios.post(
-        "http://localhost:5000/api/subscribe",
+        "https://api-academy.tabaani.co/api/subscribe",
         { userId, courseId },
         {
           withCredentials: true,
