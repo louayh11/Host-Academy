@@ -16,7 +16,7 @@ const TOFComponent = (lessonId) => {
       question: question,
       option1: "true",
       option2: "false",
-      rightAnswer: selectedChoice=="true"?["option1"]:["option2"]
+      rightAnswer: selectedChoice==="true"?["option1"]:["option2"]
     };
 
     fetch("https://api-academy.tabaani.co/api/quizzes/addt_f/"+ lessonId.lessonId, {

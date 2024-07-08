@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 //----------------------------hooks----------------------//
 import {
   useSubscribedCourses,
   useUnfinishedCourses,
 } from "../../../hooks/react-query/useCourses";
-import useFetchCourses from "../../../hooks/courseHook";
+// import useFetchCourses from "../../../hooks/courseHook";
 //----------------------------cards----------------------//
 import UnfinishedCoursesCard from "components/card/UnfinishedCoursesCard";
 import CourseCard from "components/card/CourseCard";
@@ -22,7 +22,7 @@ const Courses = () => {
     isLoading: subscribedCoursesIsLoading,
     isError,
   } = useSubscribedCourses(userId);
-  const AllCourses = useFetchCourses();
+  // const AllCourses = useFetchCourses();
 
   const { data: unfinishedCourses, isLoading: unfinishedCoursesIsLoading } =
     useUnfinishedCourses(userId);
@@ -37,13 +37,13 @@ const Courses = () => {
     setCurrentPage(page);
   };
 
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  {
-    /*const visibleCourses = subscribedCourses.slice(
-    startIndex,
-    startIndex + itemsPerPage
-  );*/
-  }
+  // const startIndex = (currentPage - 1) * itemsPerPage;
+  // {
+  //   /*const visibleCourses = subscribedCourses.slice(
+  //   startIndex,
+  //   startIndex + itemsPerPage
+  // );*/
+  // }
 
   if (subscribedCoursesIsLoading) {
     return <div>Loading...</div>;

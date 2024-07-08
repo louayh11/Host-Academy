@@ -17,7 +17,7 @@ const Certificate = () => {
       .catch((err) => {
         console.log(err.message);
       });
-  }, []);
+  }, [userId]);
 
   return (
     <div className=" grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 ">

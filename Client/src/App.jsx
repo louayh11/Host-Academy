@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import GeneralLayout from "./layouts/General";
 import UserLayout from "./layouts/user";
 import AuthLayout from "./layouts/auth";
 import AdminLayout from "./layouts/admin";
 import ProtectedRoute from "./layouts/ProtectedRoute/ProtectedRoute";
-import { projectAuth } from "./config/firebase";
+// import { projectAuth } from "./config/firebase";
 
 const App = () => {
   const userString = localStorage.getItem("user");

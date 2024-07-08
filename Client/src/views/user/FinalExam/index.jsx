@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Question from "./components/question";
-import Ready from "./components/Ready";
+// import Ready from "./components/Ready";
 import Validate from "./components/Validate";
 import Fail from "../quizzPage/components/results/fail";
 
@@ -14,7 +14,7 @@ const FinalExam = ({id}) => {
       .then(response => response.json())
       .then(data => setQuestions(data))
       .catch(error => console.error("Error fetching data:", error));
-  }, []);
+  }, [id]);
 
   const handleAnswerSelect = (questionNumber, selectedOption, questionId) => {
     setSelectedAnswers(prevAnswers => ({
@@ -54,26 +54,26 @@ const FinalExam = ({id}) => {
           })
           .catch(error => console.error("Error sending data:", error));
       };
-  const handleSubmit = () => {
-    const answersWithIds = Object.entries(selectedAnswers).map(([questionNumber, answerInfo]) => ({
-      questionId: answerInfo.questionId,
-      selectedOption: answerInfo.selectedOption,
-    }));
+  // const handleSubmit = () => {
+  //   const answersWithIds = Object.entries(selectedAnswers).map(([questionNumber, answerInfo]) => ({
+  //     questionId: answerInfo.questionId,
+  //     selectedOption: answerInfo.selectedOption,
+  //   }));
 
     
-    fetch("https://api-academy.tabaani.co/done", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(answersWithIds),
-    })
-      .then(response => response.json())
-      .then(data => {
+  //   fetch("https://api-academy.tabaani.co/done", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(answersWithIds),
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
       
-      })
-      .catch(error => console.error("Error sending data:", error));
-  };
+  //     })
+  //     .catch(error => console.error("Error sending data:", error));
+  // };
 
   return (
     <>

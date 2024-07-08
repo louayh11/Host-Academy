@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import CourseList from './CourseList';
-import axios from 'axios';
 
 
 export default function MyCourses() {

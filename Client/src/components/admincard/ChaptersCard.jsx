@@ -14,7 +14,7 @@ const ChaptersCard = ({ chapters = [], lessons = [],
   const [showForm2, setShowForm2] = useState(false);
   const [newChapterTitle, setNewChapterTitle] = useState("");
   const [newChapterDescription, setNewChapterDescription] = useState("");
-  const [newChapterLessons, setNewChapterLessons] = useState([]);
+  // const [newChapterLessons, setNewChapterLessons] = useState([]);
   const [newlessonTitle, setNewlessonTitle] = useState("");
   const [newlessonDescription, setNewlessonDescription] = useState("");
   const [newLessonvideo, setNewLessonvideo] = useState("");
@@ -104,7 +104,7 @@ const ChaptersCard = ({ chapters = [], lessons = [],
         }
       );
 
-      console.log("Chapter added successfully");
+      console.log(response);
     } catch (error) {
       console.error(error);
     }

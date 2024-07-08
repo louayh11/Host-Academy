@@ -6,7 +6,7 @@ const QuizList = (lessonId) => {
 
   useEffect(() => {
     fetchQuizzes(); // Fetch quizzes on component mount
-  }, []);
+  });
 
   const fetchQuizzes = () => {
     fetch(

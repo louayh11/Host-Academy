@@ -89,6 +89,8 @@ function reducer(state, action) {
           status: "disabled",
           style: "fill",
         };
+      default:
+        return state;
     }
   }
 
@@ -108,6 +110,8 @@ function reducer(state, action) {
           status: "disabled",
           style: "fill",
         };
+      default:
+        return state;
     }
   }
 
@@ -127,6 +131,8 @@ function reducer(state, action) {
           status: "disabled",
           style: "fill",
         };
+      default:
+          return state;
     }
   }
 
@@ -146,6 +152,8 @@ function reducer(state, action) {
           status: "disabled",
           style: "outline",
         };
+      default:
+          return state;
     }
   }
 
@@ -165,6 +173,8 @@ function reducer(state, action) {
           status: "disabled",
           style: "outline",
         };
+      default:
+          return state;
     }
   }
 
@@ -184,6 +194,8 @@ function reducer(state, action) {
           status: "disabled",
           style: "outline",
         };
+      default:
+          return state;
     }
   }
 
@@ -203,6 +215,8 @@ function reducer(state, action) {
           status: "disabled",
           style: "fill",
         };
+      default:
+          return state;
     }
   }
 
@@ -222,6 +236,8 @@ function reducer(state, action) {
           status: "disabled",
           style: "fill",
         };
+      default:
+          return state;
     }
   }
 
@@ -241,6 +257,8 @@ function reducer(state, action) {
           status: "disabled",
           style: "fill",
         };
+      default:
+          return state;
     }
   }
 
@@ -260,6 +278,8 @@ function reducer(state, action) {
           status: "disabled",
           style: "outline",
         };
+      default:
+          return state;
     }
   }
 
@@ -279,6 +299,8 @@ function reducer(state, action) {
           status: "disabled",
           style: "outline",
         };
+      default:
+          return state;
     }
   }
 
@@ -298,6 +320,8 @@ function reducer(state, action) {
           status: "disabled",
           style: "outline",
         };
+      default:
+          return state;
     }
   }
 
@@ -307,6 +331,8 @@ function reducer(state, action) {
         ...state,
         status: "hovered",
       };
+    default:
+        return state;
   }
 
   return state;

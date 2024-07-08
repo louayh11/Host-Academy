@@ -3,7 +3,7 @@ import LessonCard from "./components/LessonCard";
 import ChaptersCard from "components/card/ChaptersCard";
 import { useParams } from "react-router-dom";
 import Quiz from "../quizzPage/components/Quiz";
-import FinalExam from "../FinalExam";
+// import FinalExam from "../FinalExam";
 import Ready from "../FinalExam/components/Ready";
 
 const CourseOverview = () => {
@@ -21,6 +21,7 @@ const [progress, setProgress] = useState(null);
 
 const handleFinalExamClick = (finalExamIndex) => {
   setSelectedFinalExamIndex();
+  console.log(selectedFinalExamIndex)
   setIsFinalExamVisible(true);
 };
 
@@ -67,7 +68,7 @@ useEffect(() => {
     };
 
     fetchData();
-  }, [progress]);
+  }, [progress,id,user.uid]);
 
   const handleChapterClick = (chapterIndex) => {
     setSelectedChapterIndex(chapterIndex);
@@ -81,7 +82,9 @@ useEffect(() => {
 
   const handleQuizzClick = (quizzIndex,nextLessonId) => {
     setnextLesson({nextLessonId});
+    console.log(nextLesson)
     setSelectedQuizzIndex(quizzIndex);
+    console.log(selectedQuizzIndex)
     setIsQuizVisible(true);
     setIsFinalExamVisible(false);
   };

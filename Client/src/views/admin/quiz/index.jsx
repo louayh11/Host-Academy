@@ -7,10 +7,12 @@ import FinalExamAdd from '../FinalExam';
 
 const NewQuiz = ({lessonId ,id}) => {
   const [selectedChoice, setSelectedChoice] = useState('');
-  let idlesson;
+  const [idlesson, setIdLesson] = useState('');
+  // let idlesson;
   useEffect(() => {
-    idlesson=lessonId
-  }, [lessonId]);
+    setIdLesson(lessonId);
+    console.log(idlesson)
+  }, [lessonId,idlesson]);
   const handleChoiceChange = (event) => {
     console.log("lesson from index "+lessonId)
     setSelectedChoice(event.target.value);

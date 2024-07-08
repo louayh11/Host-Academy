@@ -8,8 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: cd ./Client && rm -rf node_modules && rm -f package-lock.json
       - run: cd ./Client && npm install
-      - run: cd ./Client && npm run build
+      - run: cd ./Client && CI=false npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'

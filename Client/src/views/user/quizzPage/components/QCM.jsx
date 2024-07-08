@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const QCM = ({ quiz, onSubmitAnswer }) => {
-  const { question, option1, option2, option3, option4, type } = quiz;
+  const { question, option1, option2, option3, option4 } = quiz;
 
   // State to keep track of the selected options
   const [selectedOptions, setSelectedOptions] = useState({});
@@ -24,9 +24,9 @@ const QCM = ({ quiz, onSubmitAnswer }) => {
     onSubmitAnswer(selectedOptionsArray, quiz.id);
   };
 
-  const handleNextPage = () => {
+  // const handleNextPage = () => {
    
-  };
+  // };
 
   return (
     <div>

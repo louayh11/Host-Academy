@@ -70,7 +70,7 @@ const Footer = () => {
             <li>
               <a
                 target="blank"
-                href=""
+                href="#"
                 className="text-base font-medium text-gray-600 hover:text-gray-600"
               >
                 all copyright (c) {1900 + new Date().getYear()} reserved

@@ -47,7 +47,7 @@ export default function CourseForm() {
       console.log("course ", newCourse)
       
       setCoursesData((prevCourses) => [...prevCourses, newCourse]);
-      console.log("Course added successfully");
+      console.log(coursesData);
       
       e.target.reset();
       setSelectedImage(null);

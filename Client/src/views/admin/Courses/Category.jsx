@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import Card from 'components/admincard'
 import React from 'react'
 import { useState } from 'react';
@@ -15,13 +15,13 @@ export default function Category() {
           const name = e.target.name.value; 
           const description = e.target.description.value; 
       
-          const requestData = {
-            name,
-            description,
-          };
-          const response = await axios.post("https://api-academy.tabaani.co/api/categories", requestData);
+          // const requestData = {
+          //   name,
+          //   description,
+          // };
+          // const response = await axios.post("https://api-academy.tabaani.co/api/categories", requestData);
       
-          const res = response.data;
+          // const res = response.data;
       
           e.target.reset();
           setSuccessAlert(true);

@@ -15,7 +15,7 @@ const ModuleCard = ({ extra, chapterTitle, lessons, id }) => {
       >
         <div className="h-full w-96">
           <div className="pb-4">
-            <img className=" h-12 w-12 rounded-full bg-gray-300" />
+            <img className=" h-12 w-12 rounded-full bg-gray-300" alt="some nice good"/>
           </div>
           <div>
             <div className="p-![18px] flex items-center justify-between md:flex-col md:items-start lg:flex-row lg:justify-between xl:flex-col xl:items-start 3xl:flex-row 3xl:justify-between">

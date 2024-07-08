@@ -5,9 +5,9 @@ const QCUComponent = (lessonId) => {
   const [options, setOptions] = useState(['', '', '', '']);
   const [rightAnswer, setRightAnswer] = useState('');
 
-  const handleAddOption = () => {
-    setOptions([...options, '']);
-  };
+  // const handleAddOption = () => {
+  //   setOptions([...options, '']);
+  // };
 
   const handleOptionChange = (index, value) => {
     const newOptions = [...options];

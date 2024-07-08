@@ -60,7 +60,7 @@ const LandingNavBar = () => {
             <img
               className="h-10 w-10 rounded-full bg-gray-400"
               src={user.photoURL}
-              alt="photo"
+              alt="photo rounded full"
             />
           </button>
 

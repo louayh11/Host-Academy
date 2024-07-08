@@ -24,7 +24,7 @@ const CourseOverviewad = () => {
       .catch((err) => {
         console.log(err.message);
       });
-  }, [id,selectedLessonId]);
+  }, [id,selectedLessonId,lessonData.instructor.userpic]);
   
 console.log("lessondata",lessonData);
   const handleLessonClick = async (id,index) => {

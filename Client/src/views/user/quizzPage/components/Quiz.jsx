@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "components/Button";
+// import { Button } from "components/Button";
 import "../../../../assets/css/quiz.css";
 import Content from "./Content";
 import Result from "./Result";
@@ -103,7 +103,7 @@ const Quiz = ({ lessonId, nextLessonId ,showLesson,onLessonClick,index}) => {
     return quizData.slice(startIndex, endIndex);
   };
 
-  const isLastPage = currentPage === totalPages;
+  // const isLastPage = currentPage === totalPages;
   const isLastPagePlusOne = currentPage === totalPages + 1;
 
   if (quizData.length === 0) {

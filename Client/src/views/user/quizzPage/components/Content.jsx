@@ -5,7 +5,8 @@ import QCM from "./QCM";
 import QCU from "./QCU";
 
 const Content = ({ generaltext, quiz,onSubmitAnswer }) => {
-  const { question, option1, option2, option3, option4, type } = quiz;
+  // const { question, option1, option2, option3, option4, type } = quiz;
+  const { question,type } = quiz;
 
   return (
     <div>

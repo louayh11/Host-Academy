@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const CourseList = (props) => {
   const [coursesData, setCoursesData] = useState([]);
   const { transparent } = props;
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
   useEffect(() => {
     // Fetch course data from your Node.js backend API
     const fetchCourses = async () => {
@@ -21,7 +21,7 @@ const CourseList = (props) => {
     };
 
     fetchCourses();
-  }, []);
+  }, [coursesData]);
   const handleDeleteCourse = async (id) => {
     try {
       await axios.delete(`https://api-academy.tabaani.co/api/course/${id}`);

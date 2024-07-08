@@ -20,8 +20,8 @@ const UnfinishedCoursesCard = ({
       <div className="w-full md:w-1/3">
         <img
           className=" h-full rounded-l-lg object-cover md:hidden lg:block "
+          alt="picture of zinc altrosv"
           src={image}
-          alt="picture"
         />
       </div>
       <div className="flex w-full flex-col justify-between md:w-2/3">

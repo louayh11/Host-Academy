@@ -1,7 +1,7 @@
-import InputField from "components/fields/InputField";
+// import InputField from "components/fields/InputField";
 import { FcGoogle } from "react-icons/fc";
 import Checkbox from "components/checkbox";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { auth } from "../../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -44,8 +44,8 @@ export default function SignIn() {
         navigate("/user/dashboard");
       }
     } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
       setError(true);
     }
   };

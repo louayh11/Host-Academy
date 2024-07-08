@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { BsArrowBarUp } from "react-icons/bs";
 import { RiMoonFill, RiSunFill } from "react-icons/ri";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import avatar from "assets/img/avatars/avatar4.png";
+// import avatar from "assets/img/avatars/avatar4.png";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 

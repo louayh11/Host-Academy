@@ -152,6 +152,7 @@ const ComplexTable = () => {
                         <div className="flex items-center gap-2">
                           <div className=" h-[60px] w-[60px]  rounded-full border-[4px] border-white bg-orange-400 dark:!border-navy-700">
                             <img
+                              alt="full rounded centered"
                               className="h-full w-full rounded-full"
                               src={cell.value}
                             />

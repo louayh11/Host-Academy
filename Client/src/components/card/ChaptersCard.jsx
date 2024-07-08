@@ -25,7 +25,7 @@ const ChaptersCard = ({
     const enabledChapters = [];
     let totalProgress = progress;
     for (let i = 0; i < chapters.length; i++) {
-      const chapter = chapters[i];
+      // const chapter = chapters[i];
       const chapterProgress = Math.min(totalProgress, 9); // Max 10 progress per chapter
       if (chapterProgress >= 0) {
         enabledChapters.push(i);
