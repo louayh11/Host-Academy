@@ -6,12 +6,8 @@ const config = require("./config");
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true, // Set credentials to true
-  })
-);
+app.use(cors({ origin: ["http://academy.tabaani.co", "https://academy.tabaani.co","academy.tabaani.co"] }));
+
 app.use(express.json());
 
 // Routes
