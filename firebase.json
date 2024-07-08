@@ -8,7 +8,7 @@
   },
   "hosting": {
     "site": "hostacademy",
-    "public": "build",
+    "public": "./Client/build",
     "ignore": [
       "firebase.json",
       "**/.*",
