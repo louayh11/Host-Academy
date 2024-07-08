@@ -1,0 +1,128 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+  match /{document=**} {
+  allow read,write: if request.auth.token.role== "admin";
+    }
+        match /status/{uid}{
+      allow read: if true;
+      allow write: if uid == request.auth.uid
+    }
+       match /faqs {
+      match /{faq} {
+      	allow read: if true;
+        allow create: if request.auth.token.admin== true;
+      	allow write: if request.auth.token.admin== true;
+      }
+    }
+   match /users {
+      match /{uid} {
+      	allow read: if true
+        allow create: if request.auth != null
+      	allow write: if uid == request.auth.uid ;
+      }
+    }
+     match /notifications {
+    	allow read: if true
+      match /{uid} {
+      	allow read: if true
+        allow create: if request.auth != null
+      	allow write: if resource.data.userId == request.auth.uid;
+      }
+    }
+     match /notificationss {
+    	allow read: if true
+      match /{uid} {
+      	allow read: if true;
+        allow create: if request.auth != null;
+      	allow write: if uid.userId == request.auth.uid;
+      }
+    }
+         match /experiencess {
+      match /{uid} {
+    		allow read: if true;
+        allow create: if request.auth != null;
+      	allow write: if uid.userId == request.auth.uid;
+      }
+    }
+      match /experiences {
+    allow read : if true;
+    }
+    match /subscriptions {
+    allow read : if true
+    }
+    match /subscriptions {
+    allow write : if true
+    }
+     match /subscriptions {
+    	allow read: if true
+      match /{uid} {
+      	allow read: if true;
+        allow create: if true;
+      	allow write: if true;
+      }
+    }
+     match /blogs {
+    	allow read: if true
+      match /{uid} {
+      	allow read: if true;
+        allow create: if request.auth != null;
+      	allow write: if uid.userId == request.auth.uid;
+      }
+    }
+      match /blogs {
+    allow read : if true
+    }
+       match /drafts {
+    	allow read: if true
+      match /{uid} {
+      	allow read: if true;
+        allow create: if request.auth != null;
+      	allow write: if uid.userId == request.auth.uid;
+      }
+    }
+      match /drafts {
+    allow read : if true
+    }
+      match /cities {
+    	allow read: if true
+      match /{city} {
+      	allow read: if true;
+        allow create: if request.auth != null;
+      	allow write: if resource.data.userId == request.auth.uid;
+      }
+    }
+      match /chats {
+      allow read : if true
+    }
+      match /orders {
+      allow read : if true
+    }
+    match /experiences/{experience} {
+    // allow read : if true;
+    allow read : if resource.data.approved == true || resource.data.userId == request.auth.uid
+    	allow write: if request.auth != null
+    }
+     match /blogs/{blog} {
+    allow read : if true
+    	allow write: if request.auth != null
+    }
+     match /drafts/{draft} {
+    allow read : if true
+    	allow write: if request.auth != null
+    }
+    match /chats/{chat} {
+    	allow read, write: if request.auth != null
+    }
+		match /orders/{order} {
+    	allow read, write: if request.auth != null
+    }
+    		match /cities/{city} {
+    	allow read: if true
+    }
+    match /media/{media} {
+    	allow read, write: if request.auth != null
+    }
+
+
+  }
+}
