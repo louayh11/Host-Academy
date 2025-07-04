@@ -9,14 +9,21 @@ import ProtectedRoute from "./layouts/ProtectedRoute/ProtectedRoute";
 
 const App = () => {
   const userString = localStorage.getItem("user");
-  const user = JSON.parse(userString);
+  let user = null;
+  try {
+    user = JSON.parse(userString);
+  } catch (e) {
+    user = null;
+  }
+  // Optionnel : vérifie que user a bien un id ou un champ qui prouve la connexion
+  const isAuthenticated = user && user.id; // ou user.uid selon ta structure
 
   return (
     <Routes>
       <Route path="/*" element={<GeneralLayout />} />
       {/* Only show AuthLayout if user is not authenticated */}
       <Route path="/" element={<Navigate to="/home" replace />} />
-      {!user && <Route path="auth/*" element={<AuthLayout />} />}
+      {!isAuthenticated && <Route path="auth/*" element={<AuthLayout />} />}
 
       <Route element={<ProtectedRoute />}>
         <Route path="user/*" element={<UserLayout />} />

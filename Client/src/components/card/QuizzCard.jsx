@@ -12,7 +12,7 @@ const QuizzCard = ({ question, option1, option2, option3, option4 }) => {
 
   // Fetch data from the API
   useEffect(() => {
-    fetch("https://api-academy.tabaani.co/api/quizzes/chapter/MXIZbeJX2hjjEX9oQuNF")
+    fetch("http://localhost:5000/api/quizzes/chapter/MXIZbeJX2hjjEX9oQuNF")
       .then((response) => response.json())
       .then((data) => setQuizData(data))
       .catch((error) => console.error("Error fetching data:", error));

@@ -29,7 +29,7 @@ const Quiz = ({ lessonId, nextLessonId ,showLesson,onLessonClick,index}) => {
   const [quizDataNotFound, setQuizDataNotFound] = useState(false);
   // Fetch data from the API
   useEffect(() => {
-    fetch("https://api-academy.tabaani.co/api/quizzes/chapter/" + lessonId)
+    fetch("http://localhost:5000/api/quizzes/chapter/" + lessonId)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Data not found");
@@ -70,7 +70,7 @@ const Quiz = ({ lessonId, nextLessonId ,showLesson,onLessonClick,index}) => {
   quizzes: formattedAnswers
 };
 
-    const url = "https://api-academy.tabaani.co/api/quizzes/checker/";
+    const url = "http://localhost:5000/api/quizzes/checker/";
     const requestOptions = {
       method: "POST",
       headers: {

@@ -23,7 +23,7 @@ const FilteredCourses = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "https://api-academy.tabaani.co/api/categories"
+          "http://localhost:5000/api/categories"
         );
         return response.data;
       } catch (error) {

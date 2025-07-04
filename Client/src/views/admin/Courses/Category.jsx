@@ -19,7 +19,7 @@ export default function Category() {
           //   name,
           //   description,
           // };
-          // const response = await axios.post("https://api-academy.tabaani.co/api/categories", requestData);
+          // const response = await axios.post("http://localhost:5000/api/categories", requestData);
       
           // const res = response.data;
       

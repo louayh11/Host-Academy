@@ -6,7 +6,8 @@ const config = require("./config");
 
 const app = express();
 
-app.use(cors({ origin: ["http://academy.tabaani.co", "https://academy.tabaani.co","academy.tabaani.co"] }));
+app.use(cors({ origin: ["http://academy.tabaani.co", "https://academy.tabaani.co", "academy.tabaani.co", "http://localhost:3000","https://host-academy-frontend-production.up.railway.app"],     credentials: true
+}));
 
 app.use(express.json());
 

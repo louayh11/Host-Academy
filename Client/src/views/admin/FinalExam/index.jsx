@@ -28,7 +28,7 @@ const FinalExamAdd = ({id}) => {
       rightAnswer: [rightAnswer]
     };
 
-    fetch('https://api-academy.tabaani.co/api/finalexam/add/'+id, {
+    fetch('http://localhost:5000/api/finalexam/add/'+id, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ const FinalExamAdd = ({id}) => {
   };
 
   const getFinalExamQuizzes = () => {
-    fetch(`https://api-academy.tabaani.co/api/finalexam/byId/`+id)
+    fetch(`http://localhost:5000/api/finalexam/byId/`+id)
       .then((response) => response.json())
       .then((data) => {
         setFinalExamQuizzes(data);

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { auth } from "../../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function SignIn() {
   const [error, setError] = useState(false);
@@ -28,10 +29,8 @@ export default function SignIn() {
       const token = await user.getIdToken();
       console.log("token", token);
 
-      const response = await fetch(
-        `https://api-academy.tabaani.co/api/get-user-role/${user.uid}`
-      );
-      const data = await response.json();
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/get-user-role/${user.uid}`);
+      const data = await response.data;
 
       // Storing user data in localStorage (if needed)
       localStorage.setItem("user", JSON.stringify(user));

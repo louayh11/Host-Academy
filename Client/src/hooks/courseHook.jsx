@@ -4,7 +4,7 @@ const useFetchCourses = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    fetch("https://api-academy.tabaani.co/api/courses")
+    fetch("http://localhost:5000/api/courses")
       .then((res) => res.json())
       .then((data) => {
         setCourses(data);

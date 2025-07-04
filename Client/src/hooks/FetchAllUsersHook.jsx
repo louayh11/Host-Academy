@@ -9,7 +9,7 @@ const useFetchAllUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("https://api-academy.tabaani.co/api/all/users");
+        const response = await axios.get("http://localhost:5000/api/all/users");
         setUsers(response.data);
         setLoading(false);
       } catch (error) {

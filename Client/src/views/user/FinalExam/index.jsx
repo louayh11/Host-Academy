@@ -10,7 +10,7 @@ const FinalExam = ({id}) => {
   const [showValidate, setShowValidate] = useState(false); 
   const [score, setScore] = useState(null);
   useEffect(() => {
-    fetch("https://api-academy.tabaani.co/api/finalexam/byId/"+id)
+    fetch("http://localhost:5000/api/finalexam/byId/"+id)
       .then(response => response.json())
       .then(data => setQuestions(data))
       .catch(error => console.error("Error fetching data:", error));
@@ -34,7 +34,7 @@ const FinalExam = ({id}) => {
         };
 
         
-        const url = "https://api-academy.tabaani.co/api/finalexam/checker";
+        const url = "http://localhost:5000/api/finalexam/checker";
         const requestOptions = {
           method: "POST",
           headers: {
@@ -61,7 +61,7 @@ const FinalExam = ({id}) => {
   //   }));
 
     
-  //   fetch("https://api-academy.tabaani.co/done", {
+  //   fetch("http://localhost:5000/done", {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json",

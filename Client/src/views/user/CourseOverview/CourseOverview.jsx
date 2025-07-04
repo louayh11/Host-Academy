@@ -32,7 +32,7 @@ useEffect(() => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://api-academy.tabaani.co/api/course/${id}`)
+    fetch(`http://localhost:5000/api/course/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setCourseData(data);
@@ -48,7 +48,7 @@ useEffect(() => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://api-academy.tabaani.co/api/progress', {
+        const response = await fetch('http://localhost:5000/api/progress', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
