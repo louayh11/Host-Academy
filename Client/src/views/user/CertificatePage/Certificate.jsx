@@ -8,7 +8,7 @@ const Certificate = () => {
   const userId = user.uid;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/certificates/user/${userId}`)
+    fetch(`https://host-academy-backend-production.up.railway.app/api/certificates/user/${userId}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

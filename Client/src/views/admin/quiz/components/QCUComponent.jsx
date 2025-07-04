@@ -29,7 +29,7 @@ const QCUComponent = (lessonId) => {
       rightAnswer: [rightAnswer]
     };
 
-    fetch('http://localhost:5000/api/quizzes/add/'+lessonId.lessonId, {
+    fetch('https://host-academy-backend-production.up.railway.app/api/quizzes/add/'+lessonId.lessonId, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

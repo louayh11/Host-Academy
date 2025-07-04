@@ -5,7 +5,7 @@ const useFilteredCourse = (by) => {
 
   useEffect(() => {
     if (by === "all") {
-      fetch("http://localhost:5000/api/courses")
+      fetch("https://host-academy-backend-production.up.railway.app/api/courses")
         .then((res) => res.json())
         .then((data) => {
           setCourses(data);
@@ -14,7 +14,7 @@ const useFilteredCourse = (by) => {
           console.log(err.message);
         });
     } else {
-      fetch("http://localhost:5000/api/courses/category/" + by)
+      fetch("https://host-academy-backend-production.up.railway.app/api/courses/category/" + by)
         .then((res) => res.json())
         .then((data) => {
           setCourses(data);

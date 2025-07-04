@@ -10,7 +10,7 @@ const FinalExam = ({id}) => {
   const [showValidate, setShowValidate] = useState(false); 
   const [score, setScore] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:5000/api/finalexam/byId/"+id)
+    fetch("https://host-academy-backend-production.up.railway.app/api/finalexam/byId/"+id)
       .then(response => response.json())
       .then(data => setQuestions(data))
       .catch(error => console.error("Error fetching data:", error));
@@ -34,7 +34,7 @@ const FinalExam = ({id}) => {
         };
 
         
-        const url = "http://localhost:5000/api/finalexam/checker";
+        const url = "https://host-academy-backend-production.up.railway.app/api/finalexam/checker";
         const requestOptions = {
           method: "POST",
           headers: {
@@ -61,7 +61,7 @@ const FinalExam = ({id}) => {
   //   }));
 
     
-  //   fetch("http://localhost:5000/done", {
+  //   fetch("https://host-academy-backend-production.up.railway.app/done", {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json",

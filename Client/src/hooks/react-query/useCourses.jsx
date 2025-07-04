@@ -2,7 +2,7 @@ import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const url = process.env.REACT_APP_API_URL || process.env.URL || "http://localhost:5000";
+const url = process.env.REACT_APP_API_URL || process.env.URL || "https://host-academy-backend-production.up.railway.app";
 
 export const useCourses = () => {
   return useQuery({

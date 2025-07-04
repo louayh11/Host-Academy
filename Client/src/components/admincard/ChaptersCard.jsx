@@ -38,7 +38,7 @@ const ChaptersCard = ({ chapters = [], lessons = [],
 
   const handleDeleteChapter = async (chapterId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/course/${id}/deletechapter/${chapterId}`);
+      await axios.delete(`https://host-academy-backend-production.up.railway.app/api/course/${id}/deletechapter/${chapterId}`);
       console.log(`Chapter ${chapterId} deleted successfully`);
 
       // Mettez à jour les données de chapitre en supprimant le chapitre supprimé
@@ -54,7 +54,7 @@ const ChaptersCard = ({ chapters = [], lessons = [],
     const fetchData = async () => {
       try {
         // Récupérer les chapitres
-        const chaptersResponse = await axios.get(`http://localhost:5000/api/course/${id}/getchapter`);
+        const chaptersResponse = await axios.get(`https://host-academy-backend-production.up.railway.app/api/course/${id}/getchapter`);
         const chaptersWithId = chaptersResponse.data.map((chapter) => ({
           ...chapter,
           id: chapter.id
@@ -62,7 +62,7 @@ const ChaptersCard = ({ chapters = [], lessons = [],
 
         // Récupérer les leçons associées à chaque chapitre
         const chaptersWithLessons = await Promise.all(chaptersWithId.map(async (chapter) => {
-          const lessonsResponse = await axios.get(`http://localhost:5000/api/course/${id}/chapter/${chapter.id}/getlesson`);
+          const lessonsResponse = await axios.get(`https://host-academy-backend-production.up.railway.app/api/course/${id}/chapter/${chapter.id}/getlesson`);
           const lessons = lessonsResponse.data; 
         
           const lessonsWithId = lessons.map((lesson) => ({
@@ -96,7 +96,7 @@ const ChaptersCard = ({ chapters = [], lessons = [],
   const handleAddChapter = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/course/${id}/add-chapter`,
+        `https://host-academy-backend-production.up.railway.app/api/course/${id}/add-chapter`,
         {
           title: newChapterTitle,
           description: newChapterDescription,
@@ -119,7 +119,7 @@ const ChaptersCard = ({ chapters = [], lessons = [],
         const chapter = chaptersData.find((chapter) => chapter.id === openChapter);
         if (chapter) {
           const response = await axios.post(
-            `http://localhost:5000/api/course/${id}/chapter/${chapter.id}/add-lesson`,
+            `https://host-academy-backend-production.up.railway.app/api/course/${id}/chapter/${chapter.id}/add-lesson`,
             {  
               LessonTitle: newlessonTitle,
               LessonDescription: newlessonDescription,

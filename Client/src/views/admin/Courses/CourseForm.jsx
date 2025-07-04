@@ -17,7 +17,7 @@ export default function CourseForm() {
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const response = await axios.get("http://localhost:5000/api/categories"); // Replace with your actual API endpoint for categories
+        const response = await axios.get("https://host-academy-backend-production.up.railway.app/api/categories"); // Replace with your actual API endpoint for categories
         const fetchedCategories = response.data;
         
         setCategories(fetchedCategories);
@@ -42,7 +42,7 @@ export default function CourseForm() {
         formData.append("imageURL", imageUrl); 
       }
   
-      const response = await axios.post("http://localhost:5000/api/course", formData);
+      const response = await axios.post("https://host-academy-backend-production.up.railway.app/api/course", formData);
       const newCourse = response.data;
       console.log("course ", newCourse)
       

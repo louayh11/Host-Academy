@@ -9,7 +9,7 @@ const useSubscribedCourses = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        fetch(`http://localhost:5000/api/user/${user.uid}/subscribed-courses`)
+        fetch(`https://host-academy-backend-production.up.railway.app/api/user/${user.uid}/subscribed-courses`)
           .then((res) => res.json())
           .then((data) => {
             console.log(data, "setSubscribedCourses");

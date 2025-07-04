@@ -16,7 +16,7 @@ const NewCourses = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/categories"
+          "https://host-academy-backend-production.up.railway.app/api/categories"
         );
         return response.data;
       } catch (error) {
