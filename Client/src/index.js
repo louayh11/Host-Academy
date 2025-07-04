@@ -4,6 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
+import * as Sentry from "@sentry/react";
+
 
 import "./index.css";
 import App from "./App";
@@ -23,3 +25,7 @@ root.render(
     </QueryClientProvider>
   </React.StrictMode>
 );
+Sentry.init({
+  dsn: process.env.REACT_APP_SENTRY_DSN,
+  tracesSampleRate: 1.0,
+});

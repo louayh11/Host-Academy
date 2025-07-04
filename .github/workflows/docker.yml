@@ -30,3 +30,25 @@ jobs:
 
       - name: Push frontend image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/host-academy-frontend:latest
+        
+      - name: Discord notification (success)
+        if: success()
+        uses: Ilshidur/action-discord@master
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        with:
+          args: |
+            ✅ CI/CD réussi pour ${{ github.repository }} !
+            Commit : ${{ github.sha }}
+            Auteur : ${{ github.actor }}
+      
+      - name: Discord notification (failure)
+        if: failure()
+        uses: Ilshidur/action-discord@master
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        with:
+          args: |
+            ❌ CI/CD échoué pour ${{ github.repository }} !
+            Commit : ${{ github.sha }}
+            Auteur : ${{ github.actor }}

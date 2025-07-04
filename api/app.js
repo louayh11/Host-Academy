@@ -17,3 +17,13 @@ app.use("/", indexRouter);
 app.listen(config.port, () =>
   console.log(`App is listening on URI http://localhost:${config.port}`)
 );
+const Sentry = require("@sentry/node");
+
+Sentry.init({
+  dsn: process.env.SENTRY_DSN,
+  tracesSampleRate: 1.0,
+});
+
+app.use(Sentry.Handlers.requestHandler());
+// ... tes routes
+app.use(Sentry.Handlers.errorHandler());
